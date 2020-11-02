@@ -46,4 +46,16 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Set');
     }
+
+    // Get the current user role as an array and compare it with the provided $roles.
+    public function hasRole($roles)
+    {
+        $roles = explode(',', str_replace("'", "", $roles));
+        foreach ($roles as $val) {
+            if (in_array($val, $this->role)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

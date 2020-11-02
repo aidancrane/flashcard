@@ -14,11 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-      if ($this->app->isLocal()) {
-          $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
-          $this->app->register(TelescopeServiceProvider::class);
-          \Laravel\Telescope\Telescope::ignoreMigrations();
-      }
+        if ($this->app->isLocal()) {
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
+            \Laravel\Telescope\Telescope::ignoreMigrations();
+        }
     }
 
     /**
@@ -29,5 +29,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        \Blade::directive('role', function ($roles) {
+            return "<?php if(auth()->user()->hasRole($roles)) { ?>";
+        });
+
+        \Blade::directive('endrole', function () {
+            return "<?php }; ?>";
+        });
     }
 }

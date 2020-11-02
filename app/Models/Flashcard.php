@@ -10,8 +10,13 @@ class Flashcard extends Model
     protected $table = 'flashcard';
 
     protected $fillable =
-  [
-    'front_text',
-    'back_text',
-  ];
+    [
+      'front_text',
+      'back_text',
+    ];
+
+    public function set()
+    {
+        return $this->belongsTo('App\Models\Set');
+    }
 }
