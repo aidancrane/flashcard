@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Sessions extends Migration
+class Flashcard extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class Sessions extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function ($table) {
+        Schema::create('flashcard', function ($table) {
             $table->string('id')->unique();
-            $table->foreignId('user_id')->nullable();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->text('payload');
-            $table->integer('last_activity');
+            $table->string('front_text', 300);
+            $table->string('back_text', 300);
+            $table->foreignId('set_id')->references('id')->on('set')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class Sessions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('flashcard');
     }
 }

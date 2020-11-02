@@ -39,5 +39,11 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'role' => 'array',
     ];
+
+    public function sets()
+    {
+        return $this->hasMany('App\Models\Set');
+    }
 }
