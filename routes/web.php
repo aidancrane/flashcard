@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get("/login", ['as' => 'login.login', 'uses' => 'App\Http\Controllers\Login@Login']);
+Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\Login@Login']);

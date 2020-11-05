@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-success">
+    <nav class="navbar navbar-expand-md navbar-dark">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('images/favicon.png') }}">
             Flashcard Club
