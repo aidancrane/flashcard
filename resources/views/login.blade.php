@@ -32,6 +32,7 @@
                         </div>
                         {!! Form::submit('Sign in', ['class' => 'btn btn-block btn-primary']) !!}
                         {!! Form::close() !!}
+                        <p class="pt-3 text-center"><small><a href="/register">Click here to register</a> if you don't have an account yet.</small></p>
                     </div>
                 </div>
             </div>
