@@ -18,11 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get("/login", ['as' => 'login.login', 'uses' => 'App\Http\Controllers\Login@Login']);
-Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\Login@Login']);
+Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\Login@CheckLogin']);
 
 Route::get("/register", ['as' => 'register.first', 'uses' => 'App\Http\Controllers\Register@Main']);
 Route::post("/register", ['as' => 'register.second', 'uses' => 'App\Http\Controllers\Register@MakeAccount']);
 
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth');
 
 Route::get('/pages/privacy-policy', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');

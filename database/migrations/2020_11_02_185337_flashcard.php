@@ -14,10 +14,11 @@ class Flashcard extends Migration
     public function up()
     {
         Schema::create('flashcard', function ($table) {
-            $table->string('id')->unique();
+            $table->id();
+            $table->unsignedBigInteger('set_id');
             $table->string('front_text', 300);
             $table->string('back_text', 300);
-            $table->foreignId('set_id')->references('id')->on('set')->onDelete('cascade');
+            $table->foreign('set_id')->references('id')->on('set')->onDelete('cascade');
             $table->timestamps();
         });
     }

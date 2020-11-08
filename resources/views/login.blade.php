@@ -11,20 +11,19 @@
                     <div class="card-body">
                         @if ($errors->any())
                         <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                            @foreach ($errors->all() as $error)
+                            {{ $error }}
+                            <br>
+                            @endforeach
                         </div>
                         @else
                         <p class="card-text"><small>Please enter your account details below to login.</small></p>
                         @endif
 
-                        {!! Form::open(['route' => 'login.check']) !!}
+                        {!! Form::open(['route' => 'login.check', 'method' => 'post']) !!}
                         <div class="form-group">
-                            {!! Form::label('email', 'Email Address'); !!}
-                            {!! Form::text('email', null ,['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
+                            {!! Form::label('email_address', 'Email Address'); !!}
+                            {!! Form::text('email_address', null ,['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('password', 'Password'); !!}

@@ -14,11 +14,12 @@ class Set extends Migration
     public function up()
     {
         Schema::create('set', function ($table) {
-            $table->string('id')->unique();
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('set_title', 100);
             $table->string('category', 100);
             $table->boolean('is_favourite')->default(false);
-            $table->foreignId('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('creation_date');
             $table->timestamps();
         });

@@ -23,6 +23,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
+                @auth
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                @endauth
             </ul>
             @guest
             <div class="d-flex flex-column float-right flex-md-row align-items-center px-md-1">
