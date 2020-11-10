@@ -39,5 +39,14 @@
                 </div>
             </div>
             @endguest
+            @auth
+            <div class="d-flex flex-column float-right flex-md-row align-items-center px-md-1">
+                <div class="col-xs-6">
+                    {!! Form::open(['route' => 'login.logout', 'method' => 'post']) !!}
+                    {!! Form::submit('Log out', ['class' => 'btn btn-outline-light']) !!}
+                    {!! Form::close() !!}
+                </div>
+            </div>
+            @endauth
         </div>
     </nav>

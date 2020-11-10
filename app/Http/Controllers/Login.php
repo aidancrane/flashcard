@@ -34,4 +34,14 @@ class Login extends Controller
             return redirect()->back()->withErrors("You are missing the email address and password.");
         }
     }
+
+    public function LogOut(Request $request)
+    {
+        // If the user is logged in.
+        if (Auth::check()) {
+            // Log them out.
+            Auth::logout();
+        }
+        return redirect("/");
+    }
 }
