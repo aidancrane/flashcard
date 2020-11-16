@@ -2,7 +2,7 @@
 <style>
 </style>
 <footer class="footer w-100 my-5">
-    <div class="container py-4">
+    {{-- <div class="container py-4">
         <div class="row">
             <div class="col-sm-3">
                 <h5>Get started</h5>
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="second-bar">
+    <div class="second-bar">
         <div class="container">
             <h2 class="logo"><a href="#"> LOGO </a></h2>
             <div class="social-icons">

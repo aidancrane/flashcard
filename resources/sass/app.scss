@@ -7,6 +7,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Material Design Fonts
+@import '~@mdi/font/scss/materialdesignicons';
+
 .navbar-brand>img {
    display: inline-block;
    height: 30px;
@@ -19,4 +22,9 @@ body {
 
 .footer {
   background: #CCEBFF;
+}
+
+.sidebar-sticky {
+position:fixed;
+max-width: 20%;
 }
