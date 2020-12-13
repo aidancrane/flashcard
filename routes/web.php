@@ -25,6 +25,11 @@ Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\Da
 
 Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard'])->middleware('auth');
 
+Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController')->middleware('auth');
+
+Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController')->middleware('auth');
+
+
 Route::get('/pages/privacy-policy', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');
 });

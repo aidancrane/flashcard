@@ -10,6 +10,9 @@
 // Material Design Fonts
 @import '~@mdi/font/scss/materialdesignicons';
 
+// Import Yaijra Datatables
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+
 .navbar-brand>img {
    display: inline-block;
    height: 30px;
@@ -27,4 +30,9 @@ body {
 .sidebar-sticky {
 position:fixed;
 max-width: 20%;
+}
+
+.no-text-decoration
+{
+text-decoration: none !important
 }
