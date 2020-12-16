@@ -16,4 +16,10 @@ class Set extends Model
       'is_favourite',
       'creation_date',
     ];
+
+
+    public function owner()
+    {
+        return $this->hasOne('App\Models\User');
+    }
 }

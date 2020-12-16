@@ -26,6 +26,7 @@ Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\Da
 Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard'])->middleware('auth');
 
 Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController')->middleware('auth');
+Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
 
 Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController')->middleware('auth');
 

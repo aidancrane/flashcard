@@ -15,11 +15,11 @@ class Set extends Migration
     {
         Schema::create('set', function ($table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('owner_id');
             $table->string('set_title', 100);
-            $table->string('category', 100);
+            $table->string('category', 100)->default("");
             $table->boolean('is_favourite')->default(false);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('creation_date');
             $table->timestamps();
         });
