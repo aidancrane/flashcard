@@ -30,8 +30,7 @@ class SetPolicy
      */
     public function view(User $user, Set $set)
     {
-        //
-        dd($set);
+        return $user->id === $set->owner_id;
     }
 
     /**
