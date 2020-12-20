@@ -7,6 +7,7 @@ use App\Http\Requests\MakeSet;
 use App\Models\Set;
 use Carbon\Carbon;
 use Auth;
+use Yajra\Datatables\Datatables;
 
 class FlashcardSetController extends Controller
 {
@@ -19,6 +20,13 @@ class FlashcardSetController extends Controller
     public function index()
     {
         return view("flashcard-sets");
+    }
+
+    // Display index datatables.
+    public function datatable_index()
+    {
+        $sets = Set::select(['id', 'set_title']);
+        return Datatables::of($sets)->make();
     }
 
     /**
@@ -69,10 +77,12 @@ class FlashcardSetController extends Controller
      */
     public function show(Set $set)
     {
-        $this->authorize('view', $set);
-        if (Auth::user()->can('make-flashcards')) {
+        // Can this user view individual flashcards?
+        if (Auth::user()->can('view', $set)) {
+            // Yes
             return view("set-editor");
         } else {
+            // No, they have been banned or something.
             request()->session()->flash('message', 'You aren\'t allowed to access that flashcard set! Try asking the owner for permission.');
             request()->session()->flash('alert-class', 'alert-danger');
             return view("dashboard-error");

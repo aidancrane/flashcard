@@ -6,7 +6,28 @@
             <main role="main">
                 <div class="card">
                     <div class="card-body">
-                        Hello Sexy mofo.
+                        <table class="set-table table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Set Title</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <script>
+                            $(function() {
+                                $('.set-table').DataTable({
+                                    processing: true,
+                                    serverSide: true,
+                                    ajax: '{{ route("sets.datatable-index") }}',
+                                    columns: [{
+                                        data: 'id',
+                                    }, {
+                                        data: 'set_title',
+                                    }]
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </main>

@@ -25,8 +25,10 @@ Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\Da
 
 Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard'])->middleware('auth');
 
-Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController')->middleware('auth');
 Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
+Route::get("/sets/datatable_index", ['as' => 'sets.datatable-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@datatable_index']);
+Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController')->middleware('auth');
+
 
 Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController')->middleware('auth');
 
