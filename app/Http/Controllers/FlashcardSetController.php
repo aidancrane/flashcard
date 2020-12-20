@@ -25,8 +25,8 @@ class FlashcardSetController extends Controller
     // Display index datatables.
     public function datatable_index()
     {
-        $sets = Set::select(['id', 'set_title']);
-        return Datatables::of($sets)->make();
+        $sets = Set::select(['id', 'set_title', 'creation_date'])->where('owner_id', auth()->user()->id);
+        return datatables()->eloquent($sets)->toJson();
     }
 
     /**

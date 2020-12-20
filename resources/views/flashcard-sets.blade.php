@@ -11,6 +11,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Set Title</th>
+                                    <th>Creation Date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                         </table>
@@ -21,10 +23,25 @@
                                     serverSide: true,
                                     ajax: '{{ route("sets.datatable-index") }}',
                                     columns: [{
-                                        data: 'id',
-                                    }, {
-                                        data: 'set_title',
-                                    }]
+                                            data: 'id',
+                                            name: 'set.id',
+                                            width: '5%',
+                                        }, {
+                                            data: 'set_title',
+                                            name: 'set.set_title',
+                                            width: '50%',
+                                        }, {
+                                            data: 'creation_date',
+                                            name: 'set.creation_date',
+                                        },
+                                        {
+                                            data: null,
+                                            render: function(data, type, row) {
+                                                return '<div class="btn-group" role="group" aria-label="Edit Flashcard sets"><button type="button" class="btn btn-sm btn-primary">Edit</button><button type="button" class="btn btn-sm btn-danger">Delete</button></div>';
+                                            },
+                                            searchable: false
+                                        }
+                                    ],
                                 });
                             });
                         </script>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Set extends Model
 {
+    use HasFactory;
+
     protected $table = 'set';
 
     protected $fillable =
