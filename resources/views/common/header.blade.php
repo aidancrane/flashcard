@@ -11,7 +11,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand px-2" href="/">
             <img src="{{ asset('images/favicon.png') }}">
             Flashcard Club
         </a>

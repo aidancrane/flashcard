@@ -23,15 +23,18 @@ Route::post("/register", ['as' => 'register.second', 'uses' => 'App\Http\Control
 
 Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\Dashboard@Landing']);
 
-Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard'])->middleware('auth');
 
-Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
-Route::get("/sets/datatable_index", ['as' => 'sets.datatable-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@datatable_index']);
-Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController')->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard']);
+
+    Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
+    Route::post("/sets/delete", ['as' => 'sets.delete-from-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@delete_from_index']);
+    Route::get("/sets/datatable_index", ['as' => 'sets.datatable-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@datatable_index']);
+    Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController');
 
 
-Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController')->middleware('auth');
-
+    Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
+});
 
 Route::get('/pages/privacy-policy', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');

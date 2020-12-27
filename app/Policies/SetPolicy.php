@@ -53,7 +53,7 @@ class SetPolicy
      */
     public function update(User $user, Set $set)
     {
-        //
+        return $user->id === $set->owner_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class SetPolicy
      */
     public function delete(User $user, Set $set)
     {
-        //
+        return $user->id === $set->owner_id;
     }
 
     /**

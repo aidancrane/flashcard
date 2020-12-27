@@ -23,7 +23,8 @@
     },
     "dependencies": {
         "@mdi/font": "^5.8.55",
-        "bootstrap": "^4.5.3",
+        "@popperjs/core": "^2.6.0",
+        "bootstrap": "^5.0.0-beta1",
         "datatables.net-bs4": "^1.10.22",
         "mjml": "^4.7.1"
     }

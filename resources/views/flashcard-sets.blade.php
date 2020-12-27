@@ -18,7 +18,7 @@
                         </table>
                         <script>
                             $(function() {
-                                $('.set-table').DataTable({
+                                var table = $('.set-table').DataTable({
                                     processing: true,
                                     serverSide: true,
                                     ajax: '{{ route("sets.datatable-index") }}',
@@ -37,9 +37,12 @@
                                         {
                                             data: null,
                                             render: function(data, type, row) {
-                                                return '<div class="btn-group" role="group" aria-label="Edit Flashcard sets"><button type="button" class="btn btn-sm btn-primary">Edit</button><button type="button" class="btn btn-sm btn-danger">Delete</button></div>';
+                                                return '<div class="btn-group" role="group"><a type="button" href="{{ route("sets.index") }}/' + row.id +
+                                                    '" class="btn btn-sm btn-primary text-white">Edit</a><button type="button" class="btn btn-sm btn-danger text-white"' +
+                                                    'data-bs-toggle="modal" data-bs-target="#deleteSetModal" data-bs-id="' + row.id + '" data-bs-title="' + row.set_title + '">Delete</button></div>';
                                             },
-                                            searchable: false
+                                            searchable: false,
+                                            sortable: false,
                                         }
                                     ],
                                 });
@@ -51,4 +54,47 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="deleteSetModal" tabindex="-1" aria-labelledby="deleteSetModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteSetModalLabel">Are you sure?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                You will not be able to recover deleted flashcard sets.
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="{{ route('sets.delete-from-index') }}" method="post">
+                    @csrf
+                    <input type="hidden" class="form-control" id="set-delete-id" name="set-delete-id">
+                    <button type="submit" class="btn btn-danger text-white">Delete Set</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var deleteModal = document.getElementById('deleteSetModal')
+    deleteModal.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget;
+
+        // Each flashcard set has an id and a title available.
+        var delete_target_id = button.getAttribute('data-bs-id');
+        var delete_target_name = button.getAttribute('data-bs-title');
+
+        // Update the flashcard delete modal to reflect the correct flashcard form id for deletion.
+        var modalTitle = deleteModal.querySelector('.modal-title');
+        var modalBodyInput = deleteModal.querySelector('.modal-footer #set-delete-id');
+
+        modalTitle.textContent = delete_target_name;
+        modalBodyInput.value = delete_target_id;
+    })
+</script>
+
 @include('common.footer')

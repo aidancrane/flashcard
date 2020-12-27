@@ -25,6 +25,7 @@ class FlashcardSetController extends Controller
     // Display index datatables.
     public function datatable_index()
     {
+        // Show only relevant selectable data, we can populate the rest of the information when they click into the item.
         $sets = Set::select(['id', 'set_title', 'creation_date'])->where('owner_id', auth()->user()->id);
         return datatables()->eloquent($sets)->toJson();
     }
@@ -55,6 +56,26 @@ class FlashcardSetController extends Controller
         $set->save();
 
         return redirect("sets/" . $set->id);
+    }
+
+    public function delete_from_index(Request $request)
+    {
+        // User would like to delete a set from their index page.
+        // Validate new set against validation rules.
+
+        if ($request->has('set-delete-id')) {
+            $set = Set::find($request->get('set-delete-id'));
+
+            $this->authorize('delete', $set);
+
+            $set->delete();
+            return redirect("sets");
+        } else {
+            request()->session()->flash('message', 'Flashcard set is invalid or not specified correctly.');
+            request()->session()->flash('alert-class', 'alert-danger');
+            return view("dashboard-error");
+        }
+        dd("unfinished");
     }
 
 
