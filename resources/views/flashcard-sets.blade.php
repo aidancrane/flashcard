@@ -22,6 +22,7 @@
                                     processing: true,
                                     serverSide: true,
                                     ajax: '{{ route("sets.datatable-index") }}',
+                                    order: [0, 'desc'],
                                     columns: [{
                                             data: 'id',
                                             name: 'set.id',
