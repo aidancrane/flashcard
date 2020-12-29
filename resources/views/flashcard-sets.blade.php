@@ -23,6 +23,9 @@
                                     serverSide: true,
                                     ajax: '{{ route("sets.datatable-index") }}',
                                     order: [0, 'desc'],
+                                    language: {
+                                        "emptyTable": "You don't have any flashcards yet!"
+                                    },
                                     columns: [{
                                             data: 'id',
                                             name: 'set.id',

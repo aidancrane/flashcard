@@ -101,7 +101,7 @@ class FlashcardSetController extends Controller
         // Can this user view individual flashcards?
         if (Auth::user()->can('view', $set)) {
             // Yes
-            return view("set-editor");
+            return view("set-editor")->with('set', $set);
         } else {
             // No, they have been banned or something.
             request()->session()->flash('message', 'You aren\'t allowed to access that flashcard set! Try asking the owner for permission.');

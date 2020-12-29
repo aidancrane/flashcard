@@ -17,6 +17,7 @@ class Set extends Migration
             $table->id();
             $table->unsignedBigInteger('owner_id');
             $table->string('set_title', 100);
+            $table->string('set_description', 200)->default("");
             $table->string('category', 100)->default("");
             $table->boolean('is_favourite')->default(false);
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
