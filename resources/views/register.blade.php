@@ -1,4 +1,4 @@
-@include('common.header')
+@extends('common.header')
 <div class="pt-2">
     <div class="container-fluid">
         <div class="row pb-4">
@@ -68,4 +68,4 @@
         </div>
     </div>
 </div>
-@include('common.footer')
+@extends('common.footer')

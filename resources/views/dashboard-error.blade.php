@@ -1,4 +1,4 @@
-@include('common.header')
+@extends('common.header')
 <div class="container pt-4">
     <main role="main">
         <div class="card">
@@ -12,4 +12,4 @@
         </div>
     </main>
 </div>
-@include('common.footer')
+@extends('common.footer')

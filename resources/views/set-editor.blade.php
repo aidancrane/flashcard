@@ -1,4 +1,9 @@
-@include('common.header')
+@extends('common.header')
+@push('scripts')
+<script>
+    alert('I\'m coming from child')
+</script>
+@endpush
 <div class="container-fluid pt-4">
     <div class="row">
         @include('menu.left-dashboard-panel')
@@ -19,7 +24,7 @@
                                         </div>
 
                                         <div class="justify-content-end">
-                                            <button type="button" class="btn btn-outline-info btn-sm">Add one</button>
+                                            <button type="button" class="btn btn-outline-info btn-sm editor-add-description">Add one</button>
                                         </div>
                                     </div>
                                     @else
@@ -52,15 +57,12 @@
                                 <div class="text-end">
                                     FLASHCARD COUNT
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </main>
         </div>
     </div>
 </div>
-@include('common.footer')
+@extends('common.footer')

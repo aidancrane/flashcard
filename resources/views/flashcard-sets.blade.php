@@ -1,4 +1,4 @@
-@include('common.header')
+@extends('common.header')
 <div class="container-fluid pt-4">
     <div class="row">
         @include('menu.left-dashboard-panel')
@@ -101,4 +101,4 @@
     })
 </script>
 
-@include('common.footer')
+@extends('common.footer')
