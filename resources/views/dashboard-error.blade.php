@@ -1,4 +1,8 @@
-@extends('common.header')
+@extends('layouts.master')
+
+@section('title', 'Landing Page')
+
+@section('content')
 <div class="container pt-4">
     <main role="main">
         <div class="card">
@@ -12,4 +16,4 @@
         </div>
     </main>
 </div>
-@extends('common.footer')
+@stop

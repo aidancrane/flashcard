@@ -1,8 +1,7 @@
-<!doctype html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Flashcard Club - Learn with Flashcards</title>
+    <title>Flashcard Club - @yield('title')</title>
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('scripts')
@@ -11,6 +10,7 @@
 </head>
 
 <body>
+    @section('header')
     <header>
         <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container-fluid">
@@ -56,3 +56,14 @@
             </div>
         </nav>
     </header>
+    @show
+    @yield('content')
+</body>
+
+@section('footer')
+<footer>
+    <!-- Thanks for reading. -->
+</footer>
+@show
+
+</html>
