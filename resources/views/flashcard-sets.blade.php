@@ -42,7 +42,7 @@
                                 data: null,
                                 render: function(data, type, row) {
                                     return '<div class="btn-group" role="group"><a type="button" href="{{ route("sets.index") }}/' + row.id +
-                                        '" class="btn btn-sm btn-primary text-white">Edit</a><button type="button" class="btn btn-sm btn-danger text-white"' +
+                                        '/edit" class="btn btn-sm btn-primary text-white">Edit</a><button type="button" class="btn btn-sm btn-danger text-white"' +
                                         'data-bs-toggle="modal" data-bs-target="#deleteSetModal" data-bs-id="' + row.id + '" data-bs-title="' + row.set_title + '">Delete</button></div>';
                                 },
                                 searchable: false,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\MakeSet;
+use App\Http\Requests\UpdateSet;
 use App\Models\Set;
 use Carbon\Carbon;
 use Auth;
@@ -55,7 +56,7 @@ class FlashcardSetController extends Controller
         $set->creation_date = Carbon::now();
         $set->save();
 
-        return redirect("sets/" . $set->id);
+        return redirect("sets/" . $set->id . "/edit");
     }
 
     public function delete_from_index(Request $request)
@@ -98,6 +99,16 @@ class FlashcardSetController extends Controller
      */
     public function show(Set $set)
     {
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Set $set)
+    {
         // Can this user view individual flashcards?
         if (Auth::user()->can('view', $set)) {
             // Yes
@@ -111,26 +122,17 @@ class FlashcardSetController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSet $request, Set $set)
     {
-        //
+        $set = Set::findOrFail($set->id);
+        $set->fill($request->all());
+        $set->save();
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Http\Requests\TryCreateUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Jobs\SendRegistrationEmail;
+use Illuminate\Support\Facades\Auth;
 
 class Register extends Controller
 {
@@ -22,6 +23,7 @@ class Register extends Controller
         $user->fill($validated);
         $user->password = Hash::make($request->password);
         $user->save();
+        Auth::login($user);
         SendRegistrationEmail::dispatch($user);
         return view('landing');
     }

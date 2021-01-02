@@ -36,3 +36,18 @@ max-width: 20%;
 {
 text-decoration: none !important
 }
+
+.te-notification
+{
+  top: 1em;
+  right: 1em;
+  z-index: 1;
+}
+
+.not-clickable {
+  pointer-events: none;
+}
+
+.clickable {
+  pointer-events: auto;
+}
