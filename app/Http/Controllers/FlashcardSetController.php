@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\MakeSet;
 use App\Http\Requests\UpdateSet;
+use App\Http\AjaxResponseMessage;
 use App\Models\Set;
 use Carbon\Carbon;
 use Auth;
@@ -130,9 +131,15 @@ class FlashcardSetController extends Controller
      */
     public function update(UpdateSet $request, Set $set)
     {
+        // Prep the response assuming all has gone as planned. We can assume data
+        // is valid as it has passed the UpdateSet request validator.
+        $response = new AjaxResponseMessage("Success", "Set successfully updated.");
+
         $set = Set::findOrFail($set->id);
         $set->fill($request->all());
         $set->save();
+
+        return (json_encode($response));
     }
 
     /**
