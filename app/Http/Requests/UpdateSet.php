@@ -31,7 +31,8 @@ class UpdateSet extends FormRequest
     public function rules()
     {
         return [
-          'set_title' => 'bail|required|max:100|min:5',
+          'set_title' => 'bail|max:200|min:5',
+          'set_description' => 'bail|max:200|min:5|nullable',
               ];
     }
 }

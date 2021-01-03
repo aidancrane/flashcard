@@ -16,7 +16,7 @@ class Set extends Migration
         Schema::create('set', function ($table) {
             $table->id();
             $table->unsignedBigInteger('owner_id');
-            $table->string('set_title', 100);
+            $table->string('set_title', 200);
             $table->string('set_description', 200)->default("");
             $table->string('category', 100)->default("");
             $table->boolean('is_favourite')->default(false);

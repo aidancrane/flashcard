@@ -14,6 +14,7 @@ class Set extends Model
     protected $fillable =
     [
       'set_title',
+      'set_description',
       'category',
       'is_favourite',
       'creation_date',

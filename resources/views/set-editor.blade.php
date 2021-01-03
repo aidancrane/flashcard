@@ -14,7 +14,7 @@
                         <div class="flex-fill justify-content-start">
                             <h1 id="change-name-h1" class="set-title-h1">{{ $set->set_title }}</h1>
                             <div hidden id="change-name-div" class="pe-2 py-1">
-                                <input id="change-name-input" class="form-control">
+                                <input id="change-name-input" maxlength="200" class="form-control">
                             </div>
                         </div>
 
@@ -22,36 +22,56 @@
                             <button type="button" id="change-name-button" class="btn btn-outline-info btn-sm set-title py-1">Change name</button>
                         </div>
                     </div>
-                    @if($set->set_description == "")
-                        <div class="d-flex">
-                            <div class="flex-fill justify-content-start">
-                                <div class="text-muted">
-                                    <small>This flashcard set doesn't have a description yet.</small>
-                                </div>
-                            </div>
 
-                            <div class="justify-content-end">
-                                <button type="button" class="btn btn-outline-info btn-sm editor-add-description">Add one</button>
+                    <div class="d-flex">
+                        <div class="flex-fill justify-content-start">
+                            <div class="text-muted">
+                                @if($set->set_description == "")
+                                    <small id="flashcard-description">This flashcard set doesn't have a description yet.</small>
+                                    @else
+                                    <small id="flashcard-description">{{ $set->set_description }}</small>
+                                    @endif
+                                    <div hidden id="change-description-div" class="pe-2 py-1">
+                                        <input id="change-description-input" maxlength="200" minlength="5" rows="5" class="form-control">
+                                    </div>
                             </div>
                         </div>
-                        @else
-                        {{ $set->set_description }}
-                        @endif
-                        @if($set->category == "")
-                            <div class="d-flex pt-2">
-                                <div class="flex-fill justify-content-start">
-                                    <div class="text-muted">
-                                        <small>This flashcard set doesn't have a category yet.</small>
-                                    </div>
-                                </div>
 
-                                <div class="justify-content-end">
-                                    <button type="button" class="btn btn-outline-info btn-sm">Add one</button>
-                                </div>
+                        <div class="justify-content-end">
+                            <button type="button" class="btn btn-outline-info btn-sm" id="change-description">
+                                {{-- Change Description Button --}}
+                                @if($set->set_description == "")
+                                    Add one
+                                    @else
+                                    Change
+                                    @endif</button>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex pt-2">
+                        <div class="flex-fill justify-content-start">
+                            <div class="text-muted">
+                                @if($set->category == "")
+                                    <small id="flashcard-categories">This flashcard set doesn't have a category yet.</small>
+                                    @else
+                                    <small id="flashcard-categories">{{ $set->category }}</small>
+                                    @endif
+
                             </div>
-                            @else
-                            {{ $set->category }}
-                            @endif
+                        </div>
+
+                        <div class="justify-content-end">
+                            <button type="button" class="btn btn-outline-info btn-sm" id="change-categories">
+                                {{-- Change Description Button --}}
+                                @if($set->set_description == "")
+                                    Add one
+                                    @else
+                                    Change
+                                    @endif</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
