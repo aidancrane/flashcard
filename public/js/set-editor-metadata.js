@@ -1,5 +1,5 @@
-// This file contains all the JS logic to interact with the set editor.
-// Mainly changing the title, description, categories etc.
+// This file contains all the JS logic to interact with the set editor metadata,
+// specifically the title, description and categories.
 
 $('document').ready(function() {
     // submitting a new title consists of three elements,

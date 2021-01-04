@@ -77,6 +77,31 @@
                 </div>
             </div>
 
+            <div class="mt-2">
+                <hr>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="p-2 pe-1">
+                            <div class="card py-4">
+                                <div class="text-center">
+                                    FLASHCARD FRONT
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="p-2 ps-1">
+                            <div class="card py-4">
+                                <div class="text-center">
+                                    FLASHCARD BACK
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
             <div class="card mt-2">
                 <div class="card-body">
                     <div class="text-center">
@@ -113,5 +138,6 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/set-editor.js') }}"></script>
+<script src="{{ asset('js/set-editor-metadata.js') }}"></script>
+<script src="{{ asset('js/set-editor-flashcard-manager.js') }}"></script>
 @endpush
