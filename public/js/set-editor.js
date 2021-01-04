@@ -9,7 +9,11 @@ $('document').ready(function() {
 
     let change_name_mode = false;
     let change_description_mode = false;
+    let change_categories_mode = false;
 
+    // flip button handled by each flip function.
+    // they only flip if successful, otherwise user will see an error toast
+    // message.
     function flipButton(id) {
         if (document.getElementById(id).textContent.includes("Done")) {
             if (id == "change-name-button") {
@@ -25,6 +29,13 @@ $('document').ready(function() {
                 $("#" + id).removeClass("pt-0");
                 document.getElementById(id).innerHTML = "Change";
             }
+
+            if (id == "change-categories") {
+                $("#" + id).addClass("btn-outline-info");
+                $("#" + id).removeClass("btn-outline-success");
+                $("#" + id).removeClass("pt-0");
+                document.getElementById(id).innerHTML = "Change";
+            }
         } else {
             $("#" + id).removeClass("btn-outline-info");
             $("#" + id).addClass("btn-outline-success");
@@ -33,7 +44,11 @@ $('document').ready(function() {
         }
     }
 
+    //
+    //      Change Title Only
+    //
 
+    // User has clicked done tick button on the top change name button.
     function submitNewTitle() {
         event.preventDefault();
         var setID = $(".set-id").val();
@@ -68,6 +83,7 @@ $('document').ready(function() {
         });
     }
 
+    // Clicked Change for an even number of times.
     function changeTitleToInput() {
         var current = $("#change-name-h1").text();
         $("#change-name-input").val(current);
@@ -76,6 +92,7 @@ $('document').ready(function() {
         flipButton("change-name-button");
     }
 
+    // Clicked change an odd number of times.
     function changeInputToTitle() {
         var current = $("#change-name-input").val();
         $("#change-name-h1").html(current);
@@ -104,6 +121,9 @@ $('document').ready(function() {
         }
     });
 
+    //
+    //      Change Description Only
+    //
 
     function submitNewDescription() {
         event.preventDefault();
@@ -144,7 +164,6 @@ $('document').ready(function() {
 
     function changeDescriptionToInput() {
         var current = $("#flashcard-description").html();
-        console.log(current);
         // If user has the default description, no need to update it.
         if (current == "This flashcard set doesn't have a description yet.")
         {
@@ -186,6 +205,82 @@ $('document').ready(function() {
             $("#change-description").click();
         }
     });
+
+    //
+    //      Change Categories Only
+    //
+
+    function submitNewCategories() {
+        event.preventDefault();
+        var setID = $(".set-id").val();
+        var token = $("input[name=\"_token\"]").val();
+        var set_categories = $("#change-categories-input").val();
+        var clean_set_categories = set_categories.replace(/<\/?[^>]+(>|$)/g, "");
+        $("#change-categories-input").val(clean_set_categories);
+        $.ajax({
+            type: "PUT",
+            url: "/sets/" + setID + "",
+            data: {
+                _token: token,
+                category: clean_set_categories
+            },
+            success: function(data) {
+                // All is well, well hopefully.
+                var json = $.parseJSON(data);
+                $('.toast-body').text(json.message_text);
+                $('.toast').toast('show');
+                // it worked,
+                // Undo Everything.
+                changeInputToCategoryPills();
+                change_categories_mode = !change_categories_mode;
+            },
+            error: function(data) {
+                // Something is not quite right.
+                var errors = $.parseJSON(data.responseText);
+                $('.toast-body').text("");
+
+                $('.toast-body').append(errors["errors"]["category"][0]);
+                $('.toast').toast('show');
+
+            },
+        });
+    }
+
+    function changeCategoriesToInput() {
+        var current = $("#flashcard-categories").html();
+        // If user has the default category, no need to update it.
+        if (current == "This flashcard set doesn't have a category yet.")
+        {
+          current = "";
+        }
+
+        $("#change-categories-input").val(current);
+        $("#change-categories-div").removeAttr('hidden');
+        document.getElementById("flashcard-categories").setAttribute('hidden', true);
+        flipButton("change-categories");
+    }
+
+    function changeInputToCategoryPills() {
+        var current = $("#change-categories-input").val();
+
+        $("#flashcard-categories").html(current);
+        $("#flashcard-categories").removeAttr('hidden');
+        document.getElementById("change-categories-div").setAttribute('hidden', true);
+        flipButton("change-categories");
+    }
+
+    $(document).on("click", "#change-categories", function(e) {
+        if (change_categories_mode == false) {
+            console.log("User has clicked the button that turns on the flashcard categories input.");
+            changeCategoriesToInput();
+            change_categories_mode = !change_categories_mode;
+        } else {
+            console.log("User would like to save the new set categories.");
+            submitNewCategories();
+        }
+
+    });
+
 
 
 

@@ -33,6 +33,7 @@ class UpdateSet extends FormRequest
         return [
           'set_title' => 'bail|max:200|min:5',
           'set_description' => 'bail|max:200|min:5|nullable',
+          'category' => 'max:100',
               ];
     }
 }

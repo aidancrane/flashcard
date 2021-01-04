@@ -57,7 +57,9 @@
                                     @else
                                     <small id="flashcard-categories">{{ $set->category }}</small>
                                     @endif
-
+                                    <div hidden id="change-categories-div" class="pe-2 py-1">
+                                        <input id="change-categories-input" maxlength="200" minlength="5" rows="5" class="form-control">
+                                    </div>
                             </div>
                         </div>
 

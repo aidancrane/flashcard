@@ -10,6 +10,7 @@ use App\Models\Set;
 use Carbon\Carbon;
 use Auth;
 use Yajra\Datatables\Datatables;
+use App\Rules\WithoutSpaces;
 
 class FlashcardSetController extends Controller
 {
@@ -134,6 +135,11 @@ class FlashcardSetController extends Controller
         // Prep the response assuming all has gone as planned. We can assume data
         // is valid as it has passed the UpdateSet request validator.
         $response = new AjaxResponseMessage("Success", "Set successfully updated.");
+
+        // We don't want spaces in categories.
+        $request->validate([
+            'category' => [new WithoutSpaces],
+        ]);
 
         $set = Set::findOrFail($set->id);
         $set->fill($request->all());
