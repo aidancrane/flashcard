@@ -1,5 +1,7 @@
-$('document').ready(function() {
+// This file contains all the JS logic to interact with the set editor.
+// Mainly changing the title, description, categories etc.
 
+$('document').ready(function() {
     // submitting a new title consists of three elements,
 
     // change-name-div - A div hiding an input box.
@@ -281,7 +283,11 @@ $('document').ready(function() {
 
     });
 
-
-
+    // When the user presses enter on change name.
+    $("#change-categories-input").keyup(function(event) {
+        if (event.keyCode === 13) {
+            $("#change-categories").click();
+        }
+    });
 
 });
