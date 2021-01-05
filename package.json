@@ -26,6 +26,7 @@
         "@popperjs/core": "^2.6.0",
         "bootstrap": "^5.0.0-beta1",
         "datatables.net-bs4": "^1.10.23",
+        "easymde": "^2.13.0",
         "mjml": "^4.7.1"
     }
 }

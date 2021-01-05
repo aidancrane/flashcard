@@ -83,37 +83,51 @@
                     <div class="col-md">
                         <div class="p-2 pe-1">
                             <div class="card py-4">
-                                <div class="text-center">
-                                    FLASHCARD FRONT
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="p-2 ps-1">
-                            <div class="card py-4">
-                                <div class="text-center">
-                                    FLASHCARD BACK
-                                </div>
+                                FLASHCARD FRONT
+                                <textarea></textarea>
+                                <script>
+                                    var easymde = new EasyMDE({
+                                        // autofocus: true,
+                                        // autoDownloadFontAwesome: false,
+                                        showIcons: ["code", "table"],
+                                        toolbar: [{
+                                            name: "bold",
+                                            action: EasyMDE.toggleBold,
+                                            className: "fa fa-bold",
+                                            title: "Bold",
+                                        }, ],
+                                    });
+                                    easymde.value("This text will appear in the editor");
+                                </script>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr>
+                <div class="col-md">
+                    <div class="p-2 ps-1">
+                        <div class="card py-4">
+                            <div class="text-center">
+                                FLASHCARD BACK
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <hr>
+        </div>
 
-            <div class="card mt-2">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h1><span class="mdi mdi-card-plus-outline"></span></h1>
-                        Add a flashcard
-                    </div>
-                    <div class="text-end">
-                        FLASHCARD COUNT
-                    </div>
+        <div class="card mt-2">
+            <div class="card-body">
+                <div class="text-center">
+                    <h1><span class="mdi mdi-card-plus-outline"></span></h1>
+                    Add a flashcard
+                </div>
+                <div class="text-end">
+                    FLASHCARD COUNT
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>
 @stop
