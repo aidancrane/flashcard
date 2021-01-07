@@ -88,16 +88,87 @@
                                 <script>
                                     var easymde = new EasyMDE({
                                         // autofocus: true,
-                                        // autoDownloadFontAwesome: false,
-                                        showIcons: ["code", "table"],
+                                        autoDownloadFontAwesome: false,
+                                        showIcons: ["bold", "italic", "|"],
                                         toolbar: [{
-                                            name: "bold",
-                                            action: EasyMDE.toggleBold,
-                                            className: "fa fa-bold",
-                                            title: "Bold",
-                                        }, ],
+                                                name: "bold",
+                                                action: EasyMDE.toggleBold,
+                                                className: "mdi mdi-18px mdi-format-bold",
+                                                title: "Bold",
+                                            },
+                                            {
+                                                name: "italic",
+                                                action: EasyMDE.toggleItalic,
+                                                className: "mdi mdi-18px mdi-format-italic",
+                                                title: "Italic",
+                                            },
+
+                                            {
+                                                name: "heading-smaller",
+                                                action: EasyMDE.toggleHeadingSmaller,
+                                                className: "mdi mdi-18px mdi-format-header-decrease",
+                                                title: "Smaller Heading",
+                                            },
+                                            {
+                                                name: "heading-bigger",
+                                                action: EasyMDE.toggleHeadingBigger,
+                                                className: "mdi mdi-18px mdi-format-header-increase",
+                                                title: "Bigger Heading",
+                                            },
+                                            "|",
+                                            {
+                                                name: "horizontal-rule",
+                                                action: EasyMDE.drawHorizontalRule,
+                                                className: "mdi mdi-18px mdi-minus",
+                                                title: "Insert Horizontal Line",
+                                            },
+                                            {
+                                                name: "quote",
+                                                action: EasyMDE.toggleBlockquote,
+                                                className: "mdi mdi-18px mdi-format-quote-open",
+                                                title: "Quote",
+                                            },
+                                            {
+                                                name: "unordered-list",
+                                                action: EasyMDE.toggleUnorderedList,
+                                                className: "mdi mdi-18px mdi-format-list-bulleted",
+                                                title: "Generic List",
+                                            },
+                                            {
+                                                name: "ordered-list",
+                                                action: EasyMDE.toggleOrderedList,
+                                                className: "mdi mdi-18px mdi-format-list-numbered",
+                                                title: "Numbered List",
+                                            },
+                                            {
+                                                name: "table",
+                                                action: EasyMDE.drawTable,
+                                                className: "mdi mdi-18px mdi-table",
+                                                title: "Insert Table",
+                                            },
+                                            "|",
+                                            {
+                                                name: "link",
+                                                action: EasyMDE.drawLink,
+                                                className: "mdi mdi-18px mdi-link",
+                                                title: "Create Link",
+                                            },
+                                            {
+                                                name: "image",
+                                                action: EasyMDE.drawImage,
+                                                className: "mdi mdi-18px mdi-image-area",
+                                                title: "Insert Image",
+                                            },
+                                            {
+                                                name: "preview",
+                                                action: EasyMDE.togglePreview,
+                                                noDisable: true,
+                                                className: "mdi mdi-18px mdi-eye-outline",
+                                                title: "Toggle Preview",
+                                            },
+                                        ],
                                     });
-                                    easymde.value("This text will appear in the editor");
+                                    easymde.value("This text will appear in the editor\n\n ![Dog Running](https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/22170353/German-Shepherd-Dog-running.jpg)");
                                 </script>
                             </div>
                         </div>
