@@ -23,6 +23,7 @@
                         </div>
                     </div>
 
+
                     <div class="d-flex">
                         <div class="flex-fill justify-content-start">
                             <div class="text-muted">
@@ -76,130 +77,36 @@
 
                 </div>
             </div>
+        </div>
 
-            <div class="mt-2">
+
+        <div class="mt-2 px-3" id="set-editors">
+            <div class="flashcard-container" id="flashcard-1-container">
                 <hr>
-                <div class="row">
-                    <div class="col-md">
-                        <div class="p-2 pe-1">
-                            <div class="card py-4">
-                                FLASHCARD FRONT
-                                <textarea></textarea>
-                                <script>
-                                    var easymde = new EasyMDE({
-                                        // autofocus: true,
-                                        autoDownloadFontAwesome: false,
-                                        showIcons: ["bold", "italic", "|"],
-                                        toolbar: [{
-                                                name: "bold",
-                                                action: EasyMDE.toggleBold,
-                                                className: "mdi mdi-18px mdi-format-bold",
-                                                title: "Bold",
-                                            },
-                                            {
-                                                name: "italic",
-                                                action: EasyMDE.toggleItalic,
-                                                className: "mdi mdi-18px mdi-format-italic",
-                                                title: "Italic",
-                                            },
-
-                                            {
-                                                name: "heading-smaller",
-                                                action: EasyMDE.toggleHeadingSmaller,
-                                                className: "mdi mdi-18px mdi-format-header-decrease",
-                                                title: "Smaller Heading",
-                                            },
-                                            {
-                                                name: "heading-bigger",
-                                                action: EasyMDE.toggleHeadingBigger,
-                                                className: "mdi mdi-18px mdi-format-header-increase",
-                                                title: "Bigger Heading",
-                                            },
-                                            "|",
-                                            {
-                                                name: "horizontal-rule",
-                                                action: EasyMDE.drawHorizontalRule,
-                                                className: "mdi mdi-18px mdi-minus",
-                                                title: "Insert Horizontal Line",
-                                            },
-                                            {
-                                                name: "quote",
-                                                action: EasyMDE.toggleBlockquote,
-                                                className: "mdi mdi-18px mdi-format-quote-open",
-                                                title: "Quote",
-                                            },
-                                            {
-                                                name: "unordered-list",
-                                                action: EasyMDE.toggleUnorderedList,
-                                                className: "mdi mdi-18px mdi-format-list-bulleted",
-                                                title: "Generic List",
-                                            },
-                                            {
-                                                name: "ordered-list",
-                                                action: EasyMDE.toggleOrderedList,
-                                                className: "mdi mdi-18px mdi-format-list-numbered",
-                                                title: "Numbered List",
-                                            },
-                                            {
-                                                name: "table",
-                                                action: EasyMDE.drawTable,
-                                                className: "mdi mdi-18px mdi-table",
-                                                title: "Insert Table",
-                                            },
-                                            "|",
-                                            {
-                                                name: "link",
-                                                action: EasyMDE.drawLink,
-                                                className: "mdi mdi-18px mdi-link",
-                                                title: "Create Link",
-                                            },
-                                            {
-                                                name: "image",
-                                                action: EasyMDE.drawImage,
-                                                className: "mdi mdi-18px mdi-image-area",
-                                                title: "Insert Image",
-                                            },
-                                            {
-                                                name: "preview",
-                                                action: EasyMDE.togglePreview,
-                                                noDisable: true,
-                                                className: "mdi mdi-18px mdi-eye-outline",
-                                                title: "Toggle Preview",
-                                            },
-                                        ],
-                                    });
-                                    easymde.value("This text will appear in the editor\n\n ![Dog Running](https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/22170353/German-Shepherd-Dog-running.jpg)");
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="p-2 ps-1">
-                        <div class="card py-4">
-                            <div class="text-center">
-                                FLASHCARD BACK
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-        </div>
-
-        <div class="card mt-2">
-            <div class="card-body">
-                <div class="text-center">
-                    <h1><span class="mdi mdi-card-plus-outline"></span></h1>
-                    Add a flashcard
-                </div>
-                <div class="text-end">
-                    FLASHCARD COUNT
+                <h3>Flashcard 1 - Front</h3>
+                <textarea class="easy-markdown-editor-needed flashcard-front" max="300" id="flashcard-1-front" name="flashcard-1-front"></textarea>
+                <h3>Flashcard 1 - Back</h3>
+                <textarea class="easy-markdown-editor-needed flashcard-back" max="300" id="flashcard-1-back" name="flashcard-1-back"></textarea>
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="1">Remove Flashcard 1</button>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+
+
+        <div class="px-2 py-2">
+            <div class="card mt-2">
+                <div class="card-body" id="new-flashcard">
+                    <div class="text-center">
+                        <h1><span class="mdi mdi-card-plus-outline"></span></h1>
+                        Add a flashcard
+                    </div>
+                    <div class="text-end">
+                        FLASHCARD COUNT
+                    </div>
+                </div>
+            </div>
+        </div>
 </main>
 @stop
 
