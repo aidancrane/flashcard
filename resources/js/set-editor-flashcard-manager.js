@@ -84,6 +84,8 @@ let flashcard_toolbar = [{
 // This function updates the page adding new easyMDE editors when there is a need
 // for one, otherwise it hopefully shouldn't run. There is a list that checks
 // that one is already an easyMDE called easymde_textareas it uses.
+
+// Essentailly: Adds EasyMDE editors to newly inserted textareas to dom.
 function flashcard_easyMDE_watch() {
     let set_editor_parent = document.getElementById("set-editors");
     let all_textareas = set_editor_parent.getElementsByClassName("easy-markdown-editor-needed");
@@ -102,16 +104,22 @@ function flashcard_easyMDE_watch() {
 
 
 function remove_flashcard_by_identifier(identifier) {
-    if (document.getElementById("flashcard-" + identifier + "-container")) {
-        document.getElementById("flashcard-" + identifier + "-container").remove();
-        var index = easymde_textareas.indexOf("flashcard-" + identifier + "-front");
-        if (index !== -1) {
-            easymde_textareas.splice(index, 1);
+    if (easymde_textareas.length != 2) {
+        if (document.getElementById("flashcard-" + identifier + "-container")) {
+            document.getElementById("flashcard-" + identifier + "-container").remove();
+            var index = easymde_textareas.indexOf("flashcard-" + identifier + "-front");
+            if (index !== -1) {
+                easymde_textareas.splice(index, 1);
+            }
+            var index = easymde_textareas.indexOf("flashcard-" + identifier + "-back");
+            if (index !== -1) {
+                easymde_textareas.splice(index, 1);
+            }
         }
-        var index = easymde_textareas.indexOf("flashcard-" + identifier + "-back");
-        if (index !== -1) {
-            easymde_textareas.splice(index, 1);
-        }
+    } else {
+        $('.toast-body').text("");
+        $('.toast-body').append("You cannot remove the only flashcard!");
+        $('.toast').toast('show');
     }
 }
 
@@ -125,10 +133,11 @@ function add_flashcard_by_identifier(identifier) {
         recently_inserted_remove_button = previous_flashcard.nextSibling.querySelectorAll(".flashcard-remove-button:last-child");
         flashcard_easyMDE_watch();
 
-        recently_inserted_remove_button[0].addEventListener("click" , function( event ) {
+        recently_inserted_remove_button[0].addEventListener("click", function(event) {
             remove_flashcard_by_identifier(this.id);
             order_watch();
         });
+        update_flashcard_count();
     }
 }
 
@@ -138,7 +147,8 @@ function add_flashcard_by_identifier(identifier) {
 // cards are submitted and updated by the user.
 function order_watch() {
     let cards = document.getElementsByClassName("flashcard-container");
-    for(var i=0; i < cards.length; i++){
+    easymde_textareas = [];
+    for (var i = 0; i < cards.length; i++) {
         let current_card_index = i + 1;
         cards[i].setAttribute("id", "flashcard-" + current_card_index + "-container");
 
@@ -159,8 +169,20 @@ function order_watch() {
 
         del_button.setAttribute("id", current_card_index);
         del_button.innerHTML = "Remove Flashcard " + current_card_index;
+
+        // Update master list of textareas for add and remove functions.
+        easymde_textareas.push("flashcard-" + current_card_index + "-front");
+        easymde_textareas.push("flashcard-" + current_card_index + "-back");
     }
+    // Update Count
+    update_flashcard_count();
 }
+
+function update_flashcard_count() {
+  let cards = document.getElementsByClassName("flashcard-container");
+  $('.flashcard-count').html(cards.length + " flashcards in set.");
+}
+
 
 
 
@@ -178,11 +200,6 @@ $('document').ready(function() {
 
     //
     flashcard_easyMDE_watch();
-
-      add_flashcard_by_identifier(easymde_textareas.length / 2);
-      add_flashcard_by_identifier(easymde_textareas.length / 2);
-      add_flashcard_by_identifier(easymde_textareas.length / 2);
-      add_flashcard_by_identifier(easymde_textareas.length / 2);
-
+    update_flashcard_count();
 
 });

@@ -79,20 +79,22 @@
             </div>
         </div>
 
+        <form action="/sets/{{ $set->id }}">
 
-        <div class="mt-2 px-3" id="set-editors">
-            <div class="flashcard-container" id="flashcard-1-container">
-                <hr>
-                <h3 class="flashcard-title-front">Flashcard 1 - Front</h3>
-                <textarea class="easy-markdown-editor-needed flashcard-front" max="300" id="flashcard-1-front" name="flashcard-1-front"></textarea>
-                <h3 class="flashcard-title-back">Flashcard 1 - Back</h3>
-                <textarea class="easy-markdown-editor-needed flashcard-back" max="300" id="flashcard-1-back" name="flashcard-1-back"></textarea>
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="1">Remove Flashcard 1</button>
+            <div class="mt-2 px-3" id="set-editors">
+                <div class="flashcard-container" id="flashcard-1-container">
+                    <hr>
+                    <h3 class="flashcard-title-front">Flashcard 1 - Front</h3>
+                    <textarea class="easy-markdown-editor-needed flashcard-front" max="300" id="flashcard-1-front" name="flashcard-1-front"></textarea>
+                    <h3 class="flashcard-title-back">Flashcard 1 - Back</h3>
+                    <textarea class="easy-markdown-editor-needed flashcard-back" max="300" id="flashcard-1-back" name="flashcard-1-back"></textarea>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="1">Remove Flashcard 1</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </form>
 
         <div class="px-2 py-2">
             <div class="card mt-2">
@@ -101,7 +103,7 @@
                         <h1><span class="mdi mdi-card-plus-outline"></span></h1>
                         Add a flashcard
                     </div>
-                    <div class="text-end">
+                    <div class="text-end flashcard-count">
                         FLASHCARD COUNT
                     </div>
                 </div>
@@ -112,7 +114,7 @@
 
 @section('footer')
 <!-- Response toasts -->
-<div class="position-absolute te-notification not-clickable">
+<div class="position-fixed te-notification not-clickable">
     <div class="toast-container not-clickable">
         <div class="toast not-clickable" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">

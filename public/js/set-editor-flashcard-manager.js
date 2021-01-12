@@ -166,6 +166,7 @@ var flashcard_toolbar = [{
 }]; // This function updates the page adding new easyMDE editors when there is a need
 // for one, otherwise it hopefully shouldn't run. There is a list that checks
 // that one is already an easyMDE called easymde_textareas it uses.
+// Essentailly: Adds EasyMDE editors to newly inserted textareas to dom.
 
 function flashcard_easyMDE_watch() {
   var set_editor_parent = document.getElementById("set-editors");
@@ -197,19 +198,25 @@ function flashcard_easyMDE_watch() {
 }
 
 function remove_flashcard_by_identifier(identifier) {
-  if (document.getElementById("flashcard-" + identifier + "-container")) {
-    document.getElementById("flashcard-" + identifier + "-container").remove();
-    var index = easymde_textareas.indexOf("flashcard-" + identifier + "-front");
+  if (easymde_textareas.length != 2) {
+    if (document.getElementById("flashcard-" + identifier + "-container")) {
+      document.getElementById("flashcard-" + identifier + "-container").remove();
+      var index = easymde_textareas.indexOf("flashcard-" + identifier + "-front");
 
-    if (index !== -1) {
-      easymde_textareas.splice(index, 1);
+      if (index !== -1) {
+        easymde_textareas.splice(index, 1);
+      }
+
+      var index = easymde_textareas.indexOf("flashcard-" + identifier + "-back");
+
+      if (index !== -1) {
+        easymde_textareas.splice(index, 1);
+      }
     }
-
-    var index = easymde_textareas.indexOf("flashcard-" + identifier + "-back");
-
-    if (index !== -1) {
-      easymde_textareas.splice(index, 1);
-    }
+  } else {
+    $('.toast-body').text("");
+    $('.toast-body').append("You cannot remove the only flashcard!");
+    $('.toast').toast('show');
   }
 }
 
@@ -225,6 +232,7 @@ function add_flashcard_by_identifier(identifier) {
       remove_flashcard_by_identifier(this.id);
       order_watch();
     });
+    update_flashcard_count();
   }
 } // This function looks at and corrects any changes to the list of flashcards
 // because the user may wish to delete flashcards at any time, this function
@@ -234,9 +242,9 @@ function add_flashcard_by_identifier(identifier) {
 
 function order_watch() {
   var cards = document.getElementsByClassName("flashcard-container");
+  easymde_textareas = [];
 
   for (var i = 0; i < cards.length; i++) {
-    console.log("Looking at card " + (i + 1));
     var current_card_index = i + 1;
     cards[i].setAttribute("id", "flashcard-" + current_card_index + "-container");
     front_title = $(cards[i]).find(".flashcard-title-front")[0];
@@ -244,7 +252,6 @@ function order_watch() {
     back_title = $(cards[i]).find(".flashcard-title-back")[0];
     back_textarea = $(cards[i]).find(".flashcard-back")[0];
     del_button = $(cards[i]).find(".flashcard-remove-button")[0];
-    console.log(back_title);
     front_title.innerHTML = "Flashcard " + current_card_index + " - Front";
     back_title.innerHTML = "Flashcard " + current_card_index + " - Back";
     front_textarea.setAttribute("id", "flashcard-" + current_card_index + "-front");
@@ -252,8 +259,19 @@ function order_watch() {
     front_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
     back_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
     del_button.setAttribute("id", current_card_index);
-    del_button.innerHTML = "Remove Flashcard " + current_card_index;
-  }
+    del_button.innerHTML = "Remove Flashcard " + current_card_index; // Update master list of textareas for add and remove functions.
+
+    easymde_textareas.push("flashcard-" + current_card_index + "-front");
+    easymde_textareas.push("flashcard-" + current_card_index + "-back");
+  } // Update Count
+
+
+  update_flashcard_count();
+}
+
+function update_flashcard_count() {
+  var cards = document.getElementsByClassName("flashcard-container");
+  $('.flashcard-count').html(cards.length + " flashcards in set.");
 }
 
 $('document').ready(function () {
@@ -267,10 +285,7 @@ $('document').ready(function () {
   }); //
 
   flashcard_easyMDE_watch();
-  add_flashcard_by_identifier(easymde_textareas.length / 2);
-  add_flashcard_by_identifier(easymde_textareas.length / 2);
-  add_flashcard_by_identifier(easymde_textareas.length / 2);
-  add_flashcard_by_identifier(easymde_textareas.length / 2);
+  update_flashcard_count();
 });
 
 /***/ }),

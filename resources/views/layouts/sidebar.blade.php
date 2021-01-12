@@ -1,5 +1,5 @@
 <nav class="col-md-2 d-md-block sidebar">
-    <div class="sidebar-sticky">
+    <div>
         <div class="nav flex-column flex-nowrap overflow-auto text-white p-2">
             <ul class="nav flex-column">
                 <ul class="nav flex-column">

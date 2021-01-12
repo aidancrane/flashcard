@@ -18,7 +18,7 @@ class SetPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return auth()->check();
     }
 
     /**
@@ -41,7 +41,7 @@ class SetPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**

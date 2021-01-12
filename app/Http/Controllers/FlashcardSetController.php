@@ -16,6 +16,16 @@ class FlashcardSetController extends Controller
 {
 
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource('App\Models\Set');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
