@@ -83,9 +83,9 @@
         <div class="mt-2 px-3" id="set-editors">
             <div class="flashcard-container" id="flashcard-1-container">
                 <hr>
-                <h3>Flashcard 1 - Front</h3>
+                <h3 class="flashcard-title-front">Flashcard 1 - Front</h3>
                 <textarea class="easy-markdown-editor-needed flashcard-front" max="300" id="flashcard-1-front" name="flashcard-1-front"></textarea>
-                <h3>Flashcard 1 - Back</h3>
+                <h3 class="flashcard-title-back">Flashcard 1 - Back</h3>
                 <textarea class="easy-markdown-editor-needed flashcard-back" max="300" id="flashcard-1-back" name="flashcard-1-back"></textarea>
                 <div class="d-flex justify-content-center">
                     <button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="1">Remove Flashcard 1</button>

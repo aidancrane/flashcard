@@ -217,7 +217,7 @@ function add_flashcard_by_identifier(identifier) {
   if (identifier > 0) {
     var previous_flashcard = document.getElementById("flashcard-" + identifier + "-container");
     var new_card_id = identifier + 1;
-    var new_dom_code = "<div class=\"flashcard-container\" id=\"flashcard-" + new_card_id + "-container\"><hr><h3>Flashcard " + new_card_id + " - Front</h3><textarea class=\"easy-markdown-editor-needed  flashcard-front\" max=\"300\" id=\"flashcard-" + new_card_id + "-front\" name=\"flashcard-" + new_card_id + "-front\"></textarea><h3>Flashcard " + new_card_id + " - Back</h3><textarea class=\"easy-markdown-editor-needed  flashcard-back\" max=\"300\" id=\"flashcard-" + new_card_id + "-back\" name=\"flashcard-" + new_card_id + "-back\"></textarea><div class=\"d-flex justify-content-center\"><button type=\"button\" class=\"btn btn-outline-info btn-sm py-1 flashcard-remove-button\" id=\"" + new_card_id + "\">Remove Flashcard " + new_card_id + "</button></div></div>";
+    var new_dom_code = "<div class=\"flashcard-container\" id=\"flashcard-" + new_card_id + "-container\"><hr><h3 class=\"flashcard-title-front\">Flashcard " + new_card_id + " - Front</h3><textarea class=\"easy-markdown-editor-needed  flashcard-front\" max=\"300\" id=\"flashcard-" + new_card_id + "-front\" name=\"flashcard-" + new_card_id + "-front\"></textarea><h3 class=\"flashcard-title-back\">Flashcard " + new_card_id + " - Back</h3><textarea class=\"easy-markdown-editor-needed  flashcard-back\" max=\"300\" id=\"flashcard-" + new_card_id + "-back\" name=\"flashcard-" + new_card_id + "-back\"></textarea><div class=\"d-flex justify-content-center\"><button type=\"button\" class=\"btn btn-outline-info btn-sm py-1 flashcard-remove-button\" id=\"" + new_card_id + "\">Remove Flashcard " + new_card_id + "</button></div></div>";
     previous_flashcard.insertAdjacentHTML('afterend', new_dom_code);
     recently_inserted_remove_button = previous_flashcard.nextSibling.querySelectorAll(".flashcard-remove-button:last-child");
     flashcard_easyMDE_watch();
@@ -236,22 +236,19 @@ function order_watch() {
   var cards = document.getElementsByClassName("flashcard-container");
 
   for (var i = 0; i < cards.length; i++) {
-    console.log(i);
+    console.log("Looking at card " + (i + 1));
     var current_card_index = i + 1;
     cards[i].setAttribute("id", "flashcard-" + current_card_index + "-container");
-    front_title = cards[i].firstChild.nextElementSibling.nextElementSibling;
-    console.log(front_title);
-    front_title = cards[i].firstChild.nextElementSibling;
-    front_textarea = front_title.nextElementSibling;
-    back_title = front_textarea.nextElementSibling.nextElementSibling;
-    back_textarea = back_title.nextElementSibling;
-    temp_button_div = back_textarea.nextElementSibling.nextElementSibling;
-    del_button = temp_button_div.firstChild;
+    front_title = $(cards[i]).find(".flashcard-title-front")[0];
+    front_textarea = $(cards[i]).find(".flashcard-front")[0];
+    back_title = $(cards[i]).find(".flashcard-title-back")[0];
+    back_textarea = $(cards[i]).find(".flashcard-back")[0];
+    del_button = $(cards[i]).find(".flashcard-remove-button")[0];
+    console.log(back_title);
     front_title.innerHTML = "Flashcard " + current_card_index + " - Front";
     back_title.innerHTML = "Flashcard " + current_card_index + " - Back";
     front_textarea.setAttribute("id", "flashcard-" + current_card_index + "-front");
     back_textarea.setAttribute("id", "flashcard-" + current_card_index + "-front");
-    console.log(back_textarea);
     front_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
     back_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
     del_button.setAttribute("id", current_card_index);
