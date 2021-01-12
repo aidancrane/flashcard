@@ -20,6 +20,10 @@ class Set extends Model
       'creation_date',
     ];
 
+    public function flashcards()
+    {
+        return $this->hasMany('App\Models\Flashcard');
+    }
 
     public function owner()
     {

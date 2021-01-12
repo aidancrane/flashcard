@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function sets()
     {
-        return $this->hasMany('App\Models\Set');
+        return $this->hasMany('App\Models\Set', 'owner_id');
     }
 
     // Get the current user role as an array and compare it with the provided $roles.

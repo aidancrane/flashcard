@@ -16,8 +16,9 @@ class Flashcard extends Migration
         Schema::create('flashcard', function ($table) {
             $table->id();
             $table->unsignedBigInteger('set_id');
-            $table->string('front_text', 300);
-            $table->string('back_text', 300);
+            $table->integer('flashcard_order')->default(0);
+            $table->string('front_text');
+            $table->string('back_text');
             $table->foreign('set_id')->references('id')->on('set')->onDelete('cascade');
             $table->timestamps();
         });

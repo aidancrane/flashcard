@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Auth;
 use Yajra\Datatables\Datatables;
 use App\Rules\WithoutSpaces;
+use App\Models\Flashcard;
 
 class FlashcardSetController extends Controller
 {
@@ -100,6 +101,7 @@ class FlashcardSetController extends Controller
      */
     public function store(Request $request)
     {
+        dd("2 store");
         //
     }
 
@@ -111,6 +113,7 @@ class FlashcardSetController extends Controller
      */
     public function show(Set $set)
     {
+        dd("1 show");
     }
 
     /**
@@ -142,6 +145,7 @@ class FlashcardSetController extends Controller
      */
     public function update(UpdateSet $request, Set $set)
     {
+
         // Prep the response assuming all has gone as planned. We can assume data
         // is valid as it has passed the UpdateSet request validator.
         $response = new AjaxResponseMessage("Success", "Set successfully updated.");
@@ -151,9 +155,36 @@ class FlashcardSetController extends Controller
             'category' => [new WithoutSpaces],
         ]);
 
+        //We may be updating flashcards, so lets check that we are.
+        if ($request->has('flashcard-1-front')) {
+            // We are updating flashcards so we need to update each flashcard
+            // in our set.
+            $set->flashcards()->delete();
+
+            $list_of_flashcards = [];
+            foreach ($request->all() as $array => $value) {
+                if (strpos($array, 'flashcard-') === 0) {
+                    $list_of_flashcards[$array] = $value;
+                }
+            }
+
+            $current_card = 1;
+
+            foreach ($list_of_flashcards as $key => $value) {
+                if ($request->has('flashcard-' . $current_card . '-front') && $request->has('flashcard-' . $current_card . '-back')) {
+                    $flashcard = new Flashcard();
+                    $flashcard->front_text = $request->get('flashcard-' . $current_card . '-front');
+                    $flashcard->back_text = $request->get('flashcard-' . $current_card . '-back');
+                    $set->flashcards()->save($flashcard);
+                }
+                $current_card++;
+            }
+        }
+
         $set = Set::findOrFail($set->id);
         $set->fill($request->all());
         $set->save();
+
 
         return (json_encode($response));
     }

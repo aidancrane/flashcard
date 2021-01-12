@@ -198,6 +198,10 @@ $('document').ready(function() {
         flashcard_easyMDE_watch();
     });
 
+    $('#save-flashcards').click(function() {
+        document.getElementById('flashcards').submit();
+    });
+
     //
     flashcard_easyMDE_watch();
     update_flashcard_count();

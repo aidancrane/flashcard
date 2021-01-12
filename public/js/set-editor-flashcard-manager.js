@@ -282,6 +282,9 @@ $('document').ready(function () {
   $('#new-flashcard').click(function () {
     add_flashcard_by_identifier(easymde_textareas.length / 2);
     flashcard_easyMDE_watch();
+  });
+  $('#save-flashcards').click(function () {
+    document.getElementById('flashcards').submit();
   }); //
 
   flashcard_easyMDE_watch();

@@ -79,8 +79,9 @@
             </div>
         </div>
 
-        <form action="/sets/{{ $set->id }}">
-
+        <form id="flashcards" method="POST" action="{{ route('sets.update', ['set' => $set->id]) }}">
+            @method('PATCH')
+            @csrf
             <div class="mt-2 px-3" id="set-editors">
                 <div class="flashcard-container" id="flashcard-1-container">
                     <hr>
@@ -94,21 +95,41 @@
                 </div>
             </div>
 
-        </form>
 
-        <div class="px-2 py-2">
-            <div class="card mt-2">
-                <div class="card-body" id="new-flashcard">
-                    <div class="text-center">
-                        <h1><span class="mdi mdi-card-plus-outline"></span></h1>
-                        Add a flashcard
+
+            <div class="px-2 py-2">
+                <div class="row">
+                    <div class="col">
+                        <div class="card mt-2">
+                            <div class="card-body" id="new-flashcard">
+                                <div class="text-center">
+                                    <h1><span class="mdi mdi-card-plus-outline"></span></h1>
+                                    Add a flashcard
+                                </div>
+                                <div class="text-end flashcard-count">
+                                    FLASHCARD COUNT
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-end flashcard-count">
-                        FLASHCARD COUNT
+                    <div class="col">
+                        <div class="card mt-2">
+                            <div class="card-body" id="save-flashcards">
+                                <div class="text-center">
+                                    <h1><span class="mdi mdi-content-save"></span></h1>
+                                    Save and exit
+                                </div>
+                                <div class="text-end flashcard-count">
+                                    FLASHCARD COUNT
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+        </form>
+
 </main>
 @stop
 
