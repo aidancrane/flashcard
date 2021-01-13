@@ -61,7 +61,7 @@ class FlashcardSetController extends Controller
         $validated = $request->validated();
 
         // If title was invalid, user would not get this far as they would be bounced back.
-        // So we can procedd like all is well, because it probably is TM.
+        // So we can proceed like all is well, because it probably is TM.
         $set = new Set;
 
         $set->set_title = $request->set_title;
@@ -126,8 +126,13 @@ class FlashcardSetController extends Controller
     {
         // Can this user view individual flashcards?
         if (Auth::user()->can('view', $set)) {
-            // Yes
-            return view("set-editor")->with('set', $set);
+            // Yes, user can view this set.
+
+            // Get flashcards in current set.
+            $flashcards = $set->flashcards()->orderBy('flashcard_order')->get();
+
+            // Return view (duh).
+            return view("set-editor")->with('set', $set)->with('flashcards', $flashcards);
         } else {
             // No, they have been banned or something.
             request()->session()->flash('message', 'You aren\'t allowed to access that flashcard set! Try asking the owner for permission.');
@@ -173,12 +178,16 @@ class FlashcardSetController extends Controller
             foreach ($list_of_flashcards as $key => $value) {
                 if ($request->has('flashcard-' . $current_card . '-front') && $request->has('flashcard-' . $current_card . '-back')) {
                     $flashcard = new Flashcard();
+                    $flashcard->flashcard_order = $current_card;
                     $flashcard->front_text = $request->get('flashcard-' . $current_card . '-front');
                     $flashcard->back_text = $request->get('flashcard-' . $current_card . '-back');
                     $set->flashcards()->save($flashcard);
                 }
                 $current_card++;
             }
+            request()->session()->flash('message', 'Flashcards saved successfully.');
+            request()->session()->flash('alert-class', 'alert-success');
+            return redirect("/sets");
         }
 
         $set = Set::findOrFail($set->id);

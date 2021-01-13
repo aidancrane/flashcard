@@ -255,9 +255,9 @@ function order_watch() {
     front_title.innerHTML = "Flashcard " + current_card_index + " - Front";
     back_title.innerHTML = "Flashcard " + current_card_index + " - Back";
     front_textarea.setAttribute("id", "flashcard-" + current_card_index + "-front");
-    back_textarea.setAttribute("id", "flashcard-" + current_card_index + "-front");
+    back_textarea.setAttribute("id", "flashcard-" + current_card_index + "-back");
     front_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
-    back_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
+    back_textarea.setAttribute("name", "flashcard-" + current_card_index + "-back");
     del_button.setAttribute("id", current_card_index);
     del_button.innerHTML = "Remove Flashcard " + current_card_index; // Update master list of textareas for add and remove functions.
 
@@ -285,9 +285,12 @@ $('document').ready(function () {
   });
   $('#save-flashcards').click(function () {
     document.getElementById('flashcards').submit();
-  }); //
+  }); // Add easyMDE TextAreas to all boxes that need them.
 
-  flashcard_easyMDE_watch();
+  flashcard_easyMDE_watch(); // Fix any order shenanigans.
+
+  order_watch(); // Set flashcard count to finish.
+
   update_flashcard_count();
 });
 

@@ -6,6 +6,9 @@
 <main role="main">
     <div class="card">
         <div class="card-body">
+            @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
             <table class="set-table table table-bordered">
                 <thead>
                     <tr>

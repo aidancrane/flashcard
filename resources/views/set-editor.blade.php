@@ -82,7 +82,24 @@
         <form id="flashcards" method="POST" action="{{ route('sets.update', ['set' => $set->id]) }}">
             @method('PATCH')
             @csrf
+
             <div class="mt-2 px-3" id="set-editors">
+                @foreach ($flashcards as $flashcard)
+
+                <div class="flashcard-container" id="flashcard-{{ $flashcard->flashcard_order }}-container">
+                    <hr>
+                    <h3 class="flashcard-title-front">Flashcard {{ $flashcard->flashcard_order }} - Front</h3>
+                    <textarea class="easy-markdown-editor-needed flashcard-front" max="300" id="flashcard-{{ $flashcard->flashcard_order }}-front" name="flashcard-{{ $flashcard->flashcard_order }}-front">{{ $flashcard->front_text }}</textarea>
+                    <h3 class="flashcard-title-back">Flashcard {{ $flashcard->flashcard_order }} - Back</h3>
+                    <textarea class="easy-markdown-editor-needed flashcard-back" max="300" id="flashcard-{{ $flashcard->flashcard_order }}-back" name="flashcard-{{ $flashcard->flashcard_order }}-back">{{ $flashcard->back_text }}</textarea>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="{{ $flashcard->flashcard_order }}">Remove Flashcard {{ $flashcard->flashcard_order }}</button>
+                    </div>
+                </div>
+
+                @endforeach
+
+                @if(count($flashcards) == 0)
                 <div class="flashcard-container" id="flashcard-1-container">
                     <hr>
                     <h3 class="flashcard-title-front">Flashcard 1 - Front</h3>
@@ -93,8 +110,8 @@
                         <button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="1">Remove Flashcard 1</button>
                     </div>
                 </div>
+                @endempty
             </div>
-
 
 
             <div class="px-2 py-2">
