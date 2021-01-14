@@ -17,7 +17,7 @@
                     </li>
                     <li>
                         <span class="mdi mdi-account-outline mdi-24px"></span>
-                        <span class="menu-text">My Account</span>
+                        <span class="menu-text"><a href="/users/{{ auth()->user()->id }}/edit" class="no-text-decoration text-white">My Account</a></span>
                     </li>
                 </ul>
             </ul>

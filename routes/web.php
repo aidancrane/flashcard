@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/login", ['as' => 'login.login', 'uses' => 'App\Http\Controllers\Login@Login']);
 Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\Login@CheckLogin']);
-Route::post("/logout", ['as' => 'login.logout', 'uses' => 'App\Http\Controllers\Login@Logout']);
 
 Route::get("/register", ['as' => 'register.first', 'uses' => 'App\Http\Controllers\Register@Main']);
 Route::post("/register", ['as' => 'register.second', 'uses' => 'App\Http\Controllers\Register@MakeAccount']);
@@ -27,13 +26,14 @@ Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\Da
 Route::group(['middleware' => 'auth'], function () {
     Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard']);
 
+    Route::post("/logout", ['as' => 'login.logout', 'uses' => 'App\Http\Controllers\Login@Logout']);
+
     Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
     Route::post("/sets/delete", ['as' => 'sets.delete-from-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@delete_from_index']);
     Route::get("/sets/datatable_index", ['as' => 'sets.datatable-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@datatable_index']);
     Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController');
-
-
-    Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
+    Route::resource("/users", 'App\Http\Controllers\UserController');
+    //Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
 });
 
 Route::get('/pages/privacy-policy', function () {
