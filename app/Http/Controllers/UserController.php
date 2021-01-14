@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUser;
+use App\Http\Requests\UpdateUserPasswordRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -68,7 +71,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('account-editor');
+        return view('account-editor')->with('user', $user);
     }
 
     /**
@@ -78,9 +81,20 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUser $request, User $user)
     {
-        //
+        $user->fill($request->all());
+        $user->save();
+        dd($user);
+        return redirect("users/" . $user->id . "/edit");
+    }
+
+
+    public function UpdatePassword(UpdateUserPasswordRequest $request, User $user)
+    {
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
+        return redirect("users/" . $user->id . "/edit");
     }
 
     /**

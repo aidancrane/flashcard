@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/sets/datatable_index", ['as' => 'sets.datatable-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@datatable_index']);
     Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController');
     Route::resource("/users", 'App\Http\Controllers\UserController');
+    Route::put("/users/{user}/update-password", ['as' => 'users.update-password', 'uses' => 'App\Http\Controllers\UserController@UpdatePassword']);
     //Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
 });
 

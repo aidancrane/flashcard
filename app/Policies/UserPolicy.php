@@ -17,7 +17,6 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //
     }
 
     /**
@@ -29,7 +28,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        //
+        return $user->id === $model->id;
     }
 
     /**
@@ -52,7 +51,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        //
+        return $user->id === $model->id;
     }
 
     /**
