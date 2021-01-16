@@ -113,7 +113,7 @@ class FlashcardSetController extends Controller
      */
     public function show(Set $set)
     {
-        dd("1 show");
+        return view("flashcard-study")->with('set', $set);
     }
 
     /**
