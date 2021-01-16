@@ -39,6 +39,19 @@
 
                 <div class="row mt-3">
                     <div class="col-md-3">
+                        <label for="friendly_name">Friendly Name</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control @error('friendly_name') is-invalid @enderror" id="friendly_name" placeholder="friendly_name" aria-describedby="friendly_name_feedback"
+                        value="{{ old('friendly_name', $user->friendly_name) }}" name="friendly_name">
+                        <div id="friendly_name_feedback" class="invalid-feedback">
+                            {{ $errors->first('friendly_name') }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-3">
                         <label for="username">Username</label>
                     </div>
                     <div class="col-md-9">
@@ -92,10 +105,10 @@
                         <label for="password">Repeated Password</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Repeated password" aria-describedby="password_feedback"
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password1" placeholder="Repeated password" aria-describedby="password_feedback"
                         value="" name="password1">
                         <div id="password_password" class="invalid-feedback">
-                            {{ $errors->first('password', $user) }}
+                            {{ $errors->first('password') }}
                         </div>
                     </div>
                 </div>
