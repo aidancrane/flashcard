@@ -98,6 +98,8 @@
                                     <li>Statistics, because who doesn't love a good graph.</li>
                                     <li>Account management, because currently once you make an account you cant change any of your details, oops.</li>
                                 </ul>
+
+                                Currently statistics and study mode do not work.
                             </div>
                         </div>
                     </div>
