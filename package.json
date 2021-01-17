@@ -17,7 +17,7 @@
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
         "resolve-url-loader": "^3.1.0",
-        "sass": "^1.30.0",
+        "sass": "^1.32.4",
         "sass-loader": "^8.0.0",
         "vue-template-compiler": "^2.6.12"
     },
@@ -30,6 +30,6 @@
         "datatables.net-responsive": "^2.2.7",
         "datatables.net-responsive-bs4": "^2.2.7",
         "easymde": "^2.13.0",
-        "mjml": "^4.7.1"
+        "mjml": "^4.8.1"
     }
 }
