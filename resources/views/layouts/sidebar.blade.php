@@ -1,4 +1,6 @@
-<nav class="col-md-2 d-md-block sidebar">
+{{-- STOP. Did you know this sidebar is not visible on mobile devices!
+    To update the sidebar for mobile devices you need to edit layouts.master.blade.php --}}
+<nav class="col-md-2 d-md-block sidebar d-none d-lg-block">
     <div>
         <div class="nav flex-column flex-nowrap overflow-auto text-white p-2">
             <ul class="nav flex-column">

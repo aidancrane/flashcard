@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Set;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController');
     Route::resource("/users", 'App\Http\Controllers\UserController');
     Route::put("/users/{user}/update-password", ['as' => 'users.update-password', 'uses' => 'App\Http\Controllers\UserController@UpdatePassword']);
+
+    Route::get("/flashcards/study/{set}/study-mode", ['as' => 'study.study-mode', 'uses' => 'App\Http\Controllers\StudyModeController@Study']);
+
     //Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
 });
 

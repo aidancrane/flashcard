@@ -31,13 +31,38 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
+
+                        {{-- STOP. There are multiple sidebars! This is the sidebar for mobile devices below!
+                             STOP. To update the navbar for desktop devices you will also need to update the layouts.sidebar.blade.php --}}
+
+                        <div class="d-lg-none">
+                            <li class="nav-item active">
+                                <span class="mdi mdi-light mdi-dock-top mdi-24px"></span>
+                                <span class="menu-text"><a href="/sets" class="no-text-decoration text-white">My Flashcard Sets</a></span>
+                            </li>
+                            <li class="nav-item active">
+                                <span class="mdi mdi-light mdi-dock-top mdi-24px"></span>
+                                <span class="menu-text"><a href="/sets/create" class="no-text-decoration text-white">Make new Set</a></span>
+                            </li>
+                            <li class="nav-item active">
+                                <span class="mdi mdi-light mdi-chart-line mdi-24px"></span>
+                                <span class="menu-text"><a href="/sets/create" class="no-text-decoration text-white">My Stats</a></span>
+                            </li>
+                            <li class="nav-item active">
+                                <span class="mdi mdi-light mdi-account-outline mdi-24px"></span>
+                                <span class="menu-text"><a href="/users/{{ auth()->user()->id }}/edit" class="no-text-decoration text-white">My Account</a></span>
+                            </li>
+                        </div>
+
                         @endauth
+                        @guest
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        @endguest
                     </ul>
                     @guest
                     <div class="d-flex px-md-1">
-                        <nav class="my-2 my-md-0">
-                            <a class="nav-link pt-2 text-white" href="/login">Login</a>
-                        </nav>
                         <div class="col-xs-6">
                             <a type="button" href="/register" class="btn btn-outline-light">Sign Up</a>
                         </div>

@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                <input class="btn btn-primary text-white" type="submit" value="Update Account">
+                <input class="btn btn-primary text-white mt-2" type="submit" value="Update Account">
             </form>
 
             <p class="fs-3">Update Password</p>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
 
-                <input class="btn btn-danger text-white" type="submit" value="Update Password">
+                <input class="btn btn-danger text-white mt-2" type="submit" value="Update Password">
 
             </form>
 

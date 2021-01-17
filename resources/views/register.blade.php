@@ -61,7 +61,7 @@
                             <br>
                             {!! Form::checkbox('tos_accepted'); !!}
                         </div>
-                        {!! Form::submit('Join Us', ['class' => 'btn btn-block btn-primary mt-3']) !!}
+                        {!! Form::submit('Join Us', ['class' => 'text-white btn btn-block btn-primary mt-3']) !!}
                         {!! Form::close() !!}
                         <p class="pt-3 text-center mb-0"><small>To read about our <a href="/pages/application-terms-of-service">terms of service<a> and <a href="/pages/privacy-policy">privacy policy</a> click here.</small></p>
                         <p class="text-center pt-0"><small>Made with ❤️ by Aidan.</small></p>

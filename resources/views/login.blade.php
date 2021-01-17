@@ -33,7 +33,7 @@
                             {!! Form::label('password', 'Password'); !!}
                             {!! Form::password('password' ,['class' => 'form-control', 'type' => 'password', 'placeholder' => 'Password']) !!}
                         </div>
-                        {!! Form::submit('Sign in', ['class' => 'btn btn-block btn-primary mt-3']) !!}
+                        {!! Form::submit('Sign in', ['class' => 'text-white btn btn-block btn-primary mt-3']) !!}
                         {!! Form::close() !!}
                         <p class="pt-3 text-center"><small><a href="/register">Click here to register</a> if you don't have an account yet.</small></p>
                     </div>

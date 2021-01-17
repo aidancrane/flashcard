@@ -9,12 +9,12 @@
             @if(Session::has('message'))
             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
             @endif
-            <table class="set-table table table-bordered">
+            <table class="set-table table table-bordered table-responsive">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Set Title</th>
-                        <th>Creation Date</th>
+                        <th>Title</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -24,6 +24,7 @@
                     var table = $('.set-table').DataTable({
                         processing: true,
                         serverSide: true,
+                        responsive: true,
                         ajax: '{{ route("sets.datatable-index") }}',
                         order: [0, 'desc'],
                         language: {
