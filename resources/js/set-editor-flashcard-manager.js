@@ -1,3 +1,10 @@
+var marked = require('marked');
+
+var markedImages = require('marked-images');
+
+marked.use(markedImages());
+
+
 // This file contains all the JS logic to interact with the set editor for
 // editing the count of flashcards and the positioning of the flashcard editor.
 
@@ -97,6 +104,9 @@ function flashcard_easyMDE_watch() {
                 autoDownloadFontAwesome: false,
                 toolbar: flashcard_toolbar,
                 element: document.getElementById(textarea.id),
+                previewRender: function(plainText) {
+                    return marked(plainText); // Returns HTML from a custom parser
+                },
             });
         }
     }
@@ -179,8 +189,8 @@ function order_watch() {
 }
 
 function update_flashcard_count() {
-  let cards = document.getElementsByClassName("flashcard-container");
-  $('.flashcard-count').html(cards.length + " flashcards in set.");
+    let cards = document.getElementsByClassName("flashcard-container");
+    $('.flashcard-count').html(cards.length + " flashcards in set.");
 }
 
 

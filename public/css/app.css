@@ -35393,3 +35393,7 @@ body {
   pointer-events: auto;
 }
 
+.user-generated-no-overflow {
+  overflow: hidden;
+}
+

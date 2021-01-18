@@ -16,3 +16,4 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/set-editor-flashcard-manager.js', 'public/js/set-editor-flashcard-manager.js');
 mix.js('resources/js/set-editor-metadata.js', 'public/js/set-editor-metadata.js');
+mix.js('resources/js/flashcard-viewer.js', 'public/js/flashcard-viewer.js');

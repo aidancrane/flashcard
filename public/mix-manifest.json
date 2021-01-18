@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/flashcard-viewer.js": "/js/flashcard-viewer.js",
     "/js/set-editor-flashcard-manager.js": "/js/set-editor-flashcard-manager.js",
     "/js/set-editor-metadata.js": "/js/set-editor-metadata.js"
 }
