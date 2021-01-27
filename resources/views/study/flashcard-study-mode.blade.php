@@ -7,10 +7,10 @@
     <div class="flashcard-contents d-none">
         @forelse ($set->flashcards()->orderBy('flashcard_order')->get() as $flashcard)
         <div data-flashcard-id="{{ $flashcard->id }}" data-flashcard-order="{{ $flashcard->flashcard_order }}" class="flashcard text-white">
-            <div id="front_text">
+            <div class="front_text">
                 {{ $flashcard->front_text }}
             </div>
-            <div id="back_text">
+            <div class="back_text">
                 {{ $flashcard->back_text }}
             </div>
         </div>
@@ -44,8 +44,8 @@
                         <div class="text-center">
                             <div class="container">
                                 <div class="row row-cols-2">
-                                    <div class="col border rounded p-2"><span class="mdi mdi-arrow-left mdi-24px"></span></div>
-                                    <div class="col border rounded p-2"><span class="mdi mdi-arrow-right mdi-24px"></span></div>
+                                    <div class="col border rounded p-2" id="left_button"><span class="mdi mdi-arrow-left mdi-24px"></span></div>
+                                    <div class="col border rounded p-2" id="right_button"><span class="mdi mdi-arrow-right mdi-24px"></span></div>
                                 </div>
                             </div>
                         </div>
