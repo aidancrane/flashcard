@@ -19,6 +19,7 @@ $('document').ready(function() {
         let flashcard_front = new_flashcard.firstElementChild.innerHTML.trimStart();
         let html = DOMPurify.sanitize(marked(flashcard_front));
         $('#page_first_card').html(html);
+        $('#progress_bar').css("width", ((slide_number / flashcards.length) * 100) + "%");
     }
 
     function nextSlide() {
@@ -56,7 +57,9 @@ $('document').ready(function() {
         console.log("current slide ticker is " + current_slide_ticker);
     });
 
-
+    if (flashcards.length != 0) {
+        setSlide(1);
+    }
 
     let front_text = $('#front_text').text();
 

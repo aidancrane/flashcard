@@ -28,14 +28,14 @@
             <div class="card">
                 <div class="card-body user-generated-no-overflow" id="page_first_card">
                     <div class="text-center">
-                        Flashcard Contents go here.
+                        This set doesn't have any flashcards, or you don't have javascript enabled.
                     </div>
                 </div>
             </div>
             <div class="pt-2">
-                <span class="ps-2" id="progress_ticker">0</span> of {{ count($set->flashcards()->get()) }}
+                <span class="ps-2" id="progress_ticker">1</span> of {{ count($set->flashcards()->get()) }}
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    <div class="progress-bar" role="progressbar" id="progress_bar" style="width: {{ (count($set->flashcards()->get()) == 0 ? 0 : 1 / count($set->flashcards()->get()) * 100) }}%"></div>
                 </div>
             </div>
             <div class="container pt-3">
