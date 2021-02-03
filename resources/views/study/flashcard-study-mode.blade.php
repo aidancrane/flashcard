@@ -25,8 +25,8 @@
 
     <div class="card">
         <div class="card-body user-generated-no-overflow">
-            <div class="card">
-                <div class="card-body user-generated-no-overflow" id="page_first_card">
+            <div class="card animate__animated animate__flipInX" id="page_first_card">
+                <div class="card-body user-generated-no-overflow" id="page_first_card_body">
                     <div class="text-center">
                         This set doesn't have any flashcards, or you don't have javascript enabled.
                     </div>
@@ -59,4 +59,5 @@
 
 @push('scripts')
 <script src="{{ asset('js/flashcard-viewer.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
 @endpush

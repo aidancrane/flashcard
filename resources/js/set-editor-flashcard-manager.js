@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify';
+
 var marked = require('marked');
 
 var markedImages = require('marked-images');
@@ -107,6 +109,11 @@ function flashcard_easyMDE_watch() {
                 previewRender: function(plainText) {
                     return marked(plainText); // Returns HTML from a custom parser
                 },
+                renderingConfig: {
+                    sanitizerFunction: function(renderedHTML) {
+                        return DOMPurify.sanitize(renderedHTML);
+                    },
+                },
             });
         }
     }
@@ -162,11 +169,11 @@ function order_watch() {
         let current_card_index = i + 1;
         cards[i].setAttribute("id", "flashcard-" + current_card_index + "-container");
 
-        front_title = $(cards[i]).find(".flashcard-title-front")[0];
-        front_textarea = $(cards[i]).find(".flashcard-front")[0];
-        back_title = $(cards[i]).find(".flashcard-title-back")[0];
-        back_textarea = $(cards[i]).find(".flashcard-back")[0];
-        del_button = $(cards[i]).find(".flashcard-remove-button")[0];
+        let front_title = $(cards[i]).find(".flashcard-title-front")[0];
+        let front_textarea = $(cards[i]).find(".flashcard-front")[0];
+        let back_title = $(cards[i]).find(".flashcard-title-back")[0];
+        let back_textarea = $(cards[i]).find(".flashcard-back")[0];
+        let del_button = $(cards[i]).find(".flashcard-remove-button")[0];
 
         front_title.innerHTML = "Flashcard " + current_card_index + " - Front";
         back_title.innerHTML = "Flashcard " + current_card_index + " - Back";
