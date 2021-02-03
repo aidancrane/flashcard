@@ -39,9 +39,9 @@ $('document').ready(function() {
         let new_flashcard = flashcards[slide_number - 1];
         let flashcard_front = new_flashcard.firstElementChild.innerHTML.trimStart();
         let html = DOMPurify.sanitize(marked(flashcard_front));
-        $('#page_first_card_body').html(html);
+        $('#page_first_card_body').html("<center>" + html + "</center>");
         $('#progress_bar').css("width", ((slide_number / flashcards.length) * 100) + "%");
-
+        on_side_a = true;
         $('#page_first_card').off();
         $('#page_first_card').click(flipside);
     }
@@ -57,7 +57,7 @@ $('document').ready(function() {
         on_side_a = !on_side_a;
         animateCSS('#page_first_card', 'flipOutX').then((message) => {
           let html = DOMPurify.sanitize(marked(flashcard_side));
-          $('#page_first_card_body').html(html);
+          $('#page_first_card_body').html("<center>" + html + "</center>");
           animateCSS('#page_first_card', 'flipInX');
         });
     }

@@ -107,7 +107,7 @@ function flashcard_easyMDE_watch() {
                 toolbar: flashcard_toolbar,
                 element: document.getElementById(textarea.id),
                 previewRender: function(plainText) {
-                    return marked(plainText); // Returns HTML from a custom parser
+                    return marked("<center>\n" + plainText + "</center>"); // Returns HTML from a custom parser
                 },
                 renderingConfig: {
                     sanitizerFunction: function(renderedHTML) {
