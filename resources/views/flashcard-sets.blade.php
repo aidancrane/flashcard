@@ -14,7 +14,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
-                        <th>Date</th>
+                        <th>Flashcards</th>
+                        <th>Creation Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -34,11 +35,38 @@
                                 data: 'id',
                                 name: 'set.id',
                                 width: '5%',
-                            }, {
+                            },
+                            {
                                 data: 'set_title',
                                 name: 'set.set_title',
                                 width: '50%',
-                            }, {
+                                render: function(data, type, row) {
+
+                                    let renderedResponse = "";
+
+                                    if (row.set_title != "") {
+                                        renderedResponse += row.set_title;
+                                    } else {
+                                        renderedResponse += "No Title";
+                                    }
+
+                                    if (row.set_description != "") {
+                                        renderedResponse += ' <small class="text-muted">' + row.set_description + '</small>';
+                                    }
+                                    if (row.category != "") {
+                                        renderedResponse += ' <span class="rounded text-white ps-1 pe-1" style=\"background-color: #007bff; font-size: small\">' + row.category + '</span>';
+                                    }
+                                    return renderedResponse;
+                                },
+                            },
+                            {
+                                data: 'flashcard_count',
+                                name: 'flashcard_count',
+                                width: '5%',
+                                searchable: false,
+                                sortable: false,
+                            },
+                            {
                                 data: 'creation_date',
                                 name: 'set.creation_date',
                             },

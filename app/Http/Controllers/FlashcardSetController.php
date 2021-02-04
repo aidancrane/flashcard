@@ -40,8 +40,12 @@ class FlashcardSetController extends Controller
     public function datatable_index()
     {
         // Show only relevant selectable data, we can populate the rest of the information when they click into the item.
-        $sets = Set::select(['id', 'set_title', 'creation_date'])->where('owner_id', auth()->user()->id);
-        return datatables()->eloquent($sets)->toJson();
+        $sets = Set::where('owner_id', auth()->user()->id);
+        return datatables()->eloquent($sets)
+        ->addColumn('flashcard_count', function (Set $set) {
+            return count($set->flashcards()->get());
+        })
+        ->toJson();
     }
 
     /**

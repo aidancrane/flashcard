@@ -40,6 +40,7 @@ $('document').ready(function() {
         let flashcard_front = new_flashcard.firstElementChild.innerHTML.trimStart();
         let html = DOMPurify.sanitize(marked(flashcard_front));
         $('#page_first_card_body').html("<center>" + html + "</center>");
+        $('#progress_ticker').html(slide_number);
         $('#progress_bar').css("width", ((slide_number / flashcards.length) * 100) + "%");
         on_side_a = true;
         $('#page_first_card').off();
