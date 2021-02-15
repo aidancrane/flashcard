@@ -30,7 +30,7 @@
         "datatables.net-responsive": "^2.2.7",
         "datatables.net-responsive-bs4": "^2.2.7",
         "dompurify": "^2.2.6",
-        "easymde": "^2.13.0",
+        "easymde": "^2.14.0",
         "marked": "^2.0.0",
         "marked-images": "^2.2.1",
         "mjml": "^4.8.1"
