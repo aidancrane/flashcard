@@ -35,7 +35,7 @@
                         {{-- STOP. There are multiple sidebars! This is the sidebar for mobile devices below!
                              STOP. To update the navbar for desktop devices you will also need to update the layouts.sidebar.blade.php --}}
 
-                        <div class="d-lg-none">
+                        <div class="d-lg-none d-md-none">
                             <li class="nav-item active">
                                 <span class="mdi mdi-light mdi-dock-top mdi-24px"></span>
                                 <span class="menu-text"><a href="/sets" class="no-text-decoration text-white">My Flashcard Sets</a></span>
