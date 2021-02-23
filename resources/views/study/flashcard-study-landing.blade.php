@@ -61,6 +61,10 @@
         $("#study-mode").click(function(event) {
             window.location.replace("{{ route('study.study-mode', $set) }}");
         });
+
+        $("#test-mode").click(function(event) {
+            window.location.replace("{{ route('study.test-mode', $set) }}");
+        });
     });
 </script>
 @endpush

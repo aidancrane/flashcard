@@ -36,7 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource("/users", 'App\Http\Controllers\UserController');
     Route::put("/users/{user}/update-password", ['as' => 'users.update-password', 'uses' => 'App\Http\Controllers\UserController@UpdatePassword']);
 
-    Route::get("/flashcards/study/{set}/study-mode", ['as' => 'study.study-mode', 'uses' => 'App\Http\Controllers\StudyModeController@Study']);
+    Route::get("/flashcards/study/{set}/study-mode", ['as' => 'study.study-mode', 'uses' => 'App\Http\Controllers\StudyModeController@StudyMode']);
+    Route::get("/flashcards/study/{set}/test-mode", ['as' => 'study.test-mode', 'uses' => 'App\Http\Controllers\StudyModeController@TestMode']);
 
     //Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
 });
