@@ -147,7 +147,9 @@ function add_flashcard_by_identifier(identifier) {
         let new_dom_code =
             "<div class=\"flashcard-container\" id=\"flashcard-" + new_card_id + "-container\"><hr><h3 class=\"flashcard-title-front\">Flashcard " + new_card_id + " - Front</h3><textarea class=\"easy-markdown-editor-needed  flashcard-front\" max=\"300\" id=\"flashcard-" + new_card_id + "-front\" name=\"flashcard-" + new_card_id + "-front\"></textarea><h3 class=\"flashcard-title-back\">Flashcard " + new_card_id + " - Back</h3><textarea class=\"easy-markdown-editor-needed  flashcard-back\" max=\"300\" id=\"flashcard-" + new_card_id + "-back\" name=\"flashcard-" + new_card_id + "-back\"></textarea><div class=\"d-flex justify-content-center\"><button type=\"button\" class=\"btn btn-outline-info btn-sm py-1 flashcard-remove-button\" id=\"" + new_card_id + "\">Remove Flashcard " + new_card_id + "</button></div></div>";
         previous_flashcard.insertAdjacentHTML('afterend', new_dom_code);
-        recently_inserted_remove_button = previous_flashcard.nextSibling.querySelectorAll(".flashcard-remove-button:last-child");
+
+        let recently_inserted_remove_button = previous_flashcard.nextSibling.querySelectorAll(".flashcard-remove-button:last-child");
+
         flashcard_easyMDE_watch();
 
         recently_inserted_remove_button[0].addEventListener("click", function(event) {
