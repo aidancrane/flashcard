@@ -61,9 +61,7 @@
 @stop
 
 @push('scripts')
+<script src="{{ asset('js/study-mode-viewer.js') }}"></script>
 <script src="{{ asset('js/test-mode-viewer.js') }}"></script>
-<!-- TODO Fix me to use local resources -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.6/purify.min.js" integrity="sha512-rXAHWSMciPq2KsOxTvUeYNBb45apbcEXUVSIexVPOBnKfD/xo99uUe5M2OOsC49hGdUrkRLYsATkQQHMzUo/ew==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.0/marked.min.js" integrity="sha512-9xs4M7yksWUBIo+Jhfs65z7U4QTKNuVeN6Desvi2nXREybeQB3RfTBDELEcXD1HaNlnshG87a1SijMShvp4Zcw==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
 @endpush
