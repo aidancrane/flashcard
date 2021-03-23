@@ -36,6 +36,8 @@
                 <span class="ps-2" id="progress_ticker">1</span> of {{ count($set->flashcards()->get()) }}
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" id="progress_bar" style="width: {{ (count($set->flashcards()->get()) == 0 ? 0 : 1 / count($set->flashcards()->get()) * 100) }}%"></div>
+                    <div class="progress-bar bg-success" id="progress_bar_success" role="progressbar" style="width: 0%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" id="progress_bar_fail" role="progressbar" style="width: 0%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="container pt-3">
@@ -49,7 +51,7 @@
                                     <div class="col border rounded p-2" id="left_button"><span class="mdi mdi-arrow-left mdi-24px"></span></div>
                                     <div class="col border rounded p-2" id="right_button"><span class="mdi mdi-arrow-right mdi-24px"></span></div>
                                 </div>
-                                <div class="text-center pt-1">timer</div>
+                                <div class="text-center pt-1" id="timer">timer</div>
                             </div>
                         </div>
                     </div>

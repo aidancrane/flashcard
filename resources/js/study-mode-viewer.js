@@ -29,14 +29,14 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     });
 
 // Get list of all flashcards from the document.
-var flashcards = document.getElementsByClassName("flashcard");
+window.flashcards = document.getElementsByClassName("flashcard");
 
 
 // Set the current slide ticker to 1 to indicate the start.
 // You know, the more I think about this, the more I think this should have been a json api,
 // oh well.
-let current_slide_ticker = 1;
-let on_side_a = true;
+window.current_slide_ticker = 1;
+window.on_side_a = true;
 
 // Use setSlide() to set the slide to the appropriate number, useful to jump around the set.
 window.setSlide = function setSlide(slide_number) {
@@ -118,7 +118,7 @@ $('document').ready(function() {
         console.log("current slide ticker is " + current_slide_ticker);
     });
     document.getElementById("right_button").addEventListener("click", function() {
-        nextSlide()
+        nextSlide();
         console.log("current slide ticker is " + current_slide_ticker);
     });
 
