@@ -1,10 +1,11 @@
 window.startTime;
 window.timer_started = false;
 
-
 window.correct_answers = 0;
 window.incorrect_answers = 0;
 window.answer_array = [];
+
+endGameRound = false;
 // https://stackoverflow.com/a/11486026/2697955
 // wording changed slightly although function remains the same.
 // not sure what ret += "" is for?
@@ -70,12 +71,11 @@ function setProgressBars() {
         var currentItem = answer_array[i + 1];
         if (currentItem == "correct") {
             correct_answers++;
-        }
-        else if (currentItem == "incorrect") {
+        } else if (currentItem == "incorrect") {
             incorrect_answers++;
         }
     }
-    skipped_questions =  window.current_slide_ticker - (incorrect_answers + correct_answers);
+    skipped_questions = window.current_slide_ticker - (incorrect_answers + correct_answers);
     console.log("---");
     console.log("skipped_questions:" + skipped_questions);
     console.log("correct_answers:" + correct_answers);
@@ -83,30 +83,60 @@ function setProgressBars() {
     console.log("window.flashcards.length:" + window.flashcards.length);
     $('#progress_bar_success').css("width", ((correct_answers / window.flashcards.length) * 100) + "%");
     $('#progress_bar_fail').css("width", ((incorrect_answers / window.flashcards.length) * 100) + "%");
-    if (skipped_questions == 0)
-    {
-      // We need the progress bar to take precidence over study mode.
-      // So because study mode sets the progress bar also, we need to hide this
-      // behaviour behind a delay.
-      // anti-pattern who???
-      setTimeout(function() { $('#progress_bar').css("width", "0%"); }, 10);
-      // don't worry too much, the answer scores are updated every time we press a card.
-    }
-    else {
-      $('#progress_bar').css("width", ((skipped_questions / window.flashcards.length) * 100) + "%");
+    if (skipped_questions == 0) {
+        // We need the progress bar to take precidence over study mode.
+        // So because study mode sets the progress bar also, we need to hide this
+        // behaviour behind a delay.
+        // anti-pattern who???
+        setTimeout(function() {
+            $('#progress_bar').css("width", "0%");
+        }, 10);
+        // don't worry too much, the answer scores are updated every time we press a card.
+    } else {
+        $('#progress_bar').css("width", ((skipped_questions / window.flashcards.length) * 100) + "%");
     }
 }
 
 function set_up_answer_array() {
-  // We need to make an array to start out.
-  // By default every question is marked as skipped for "fastness".
-  // bad code probs but it works?
+    // We need to make an array to start out.
+    // By default every question is marked as skipped for "fastness".
+    // bad code probs but it works?
     for (i = 1; i <= window.flashcards.length; i++) {
-      // We ignore the first element in answer_array[0] because flaschards are addressed by
-      // their index.
+        // We ignore the first element in answer_array[0] because flaschards are addressed by
+        // their index.
         answer_array[i] = "skipped";
     }
 }
+
+// Brilliant work so far!
+
+
+
+function isItEndOfTheRoad() {
+
+    if (endGameRound == true) {
+        console.log("End Game");
+        $('.submit-test').submit();
+    }
+
+    if (window.current_slide_ticker == window.flashcards.length) {
+        $('#right_button').css('background-color', '#ffc400');
+        $('#tick_button').css('background-color', '#ffc400');
+        $('#cross_button').css('background-color', '#ffc400');
+        $('#tick_button').removeClass('bg-success');
+        $('#cross_button').removeClass('bg-danger');
+        endGameRound = true;
+    } else {
+        $('#right_button').css("background-color", "");
+        $('#tick_button').css("background-color", "");
+        $('#cross_button').css("background-color", "");
+        $('#tick_button').addClass('bg-success');
+        $('#cross_button').addClass('bg-danger');
+        endGameRound = false;
+    }
+
+}
+
 
 $('document').ready(function() {
 
@@ -128,6 +158,7 @@ $('document').ready(function() {
         incorrectProgress();
         // progress slide.
         nextSlide();
+        isItEndOfTheRoad();
     });
 
     document.getElementById("tick_button").addEventListener("click", function() {
@@ -138,11 +169,13 @@ $('document').ready(function() {
         correctProgress();
         // progress slide.
         nextSlide();
+        isItEndOfTheRoad();
     });
 
     document.getElementById("left_button").addEventListener("click", function() {
         // We might have skipped some questions so we need to backtrack.
         backtrackProgressBar();
+        isItEndOfTheRoad();
     });
 
     document.getElementById("right_button").addEventListener("click", function() {
@@ -150,6 +183,7 @@ $('document').ready(function() {
         // All previously entered answers will need to be submitted from the moment you
         // backtracked.
         setProgressBars();
+        isItEndOfTheRoad();
     });
 
 });

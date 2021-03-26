@@ -60,6 +60,14 @@
         </div>
     </div>
 </main>
+<form class="submit-test" method="post" action="/flashcards/study/{{ $set->id }}/test-mode-complete">
+    @csrf
+    <input name="skipped_questions" value="" />
+    <input name="correct_answers" value="" />
+    <input name="incorrect_answers" value="" />
+    <input name="time" value="" />
+    <input type="submit" id="submit-test" />
+</form>
 @stop
 
 @push('scripts')

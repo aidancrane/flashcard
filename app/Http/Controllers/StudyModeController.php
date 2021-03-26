@@ -20,4 +20,11 @@ class StudyModeController extends Controller
 
         return view('study.flashcard-test-mode')->with('set', $set);
     }
+
+    public function TestModeComplete(Request $request, Set $set)
+    {
+        $this->authorize('view', $set);
+
+        return view('study.flashcard-test-mode-complete')->with('set', $set);
+    }
 }
