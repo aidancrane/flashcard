@@ -46,8 +46,8 @@ class DatabaseSeeder extends Seeder
         $set->save();
 
         $flashcard = new Flashcard;
-        $flashcard->front_text = "<center>\n\nExample Text!\n\n![German Shepherd](https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/22170353/German-Shepherd-Dog-running.jpg \"365x243\")\n\n</center>";
-        $flashcard->back_text = "<center>German Shepherd</center>";
+        $flashcard->front_text = "\n\nExample Text!\n\n![German Shepherd](https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/22170353/German-Shepherd-Dog-running.jpg \"365x243\")\n\n";
+        $flashcard->back_text = "German Shepherd";
         $flashcard->flashcard_order = 1;
         $flashcard->set_id = $set->id;
         $flashcard->save();

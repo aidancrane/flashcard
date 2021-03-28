@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Auth;
 
 class SubmitTestResults extends FormRequest
 {
@@ -28,7 +29,10 @@ class SubmitTestResults extends FormRequest
     public function rules()
     {
         return [
-            //
+            'skipped_questions' => 'numeric|min:0',
+            'correct_answers' => 'numeric|min:0',
+            'incorrect_answers' => 'numeric|min:0',
+            'time' => '',
         ];
     }
 }

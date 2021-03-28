@@ -15,7 +15,7 @@
                 <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body">
-                            You got x cards correct.
+                            You got {{ $correct_answers }} cards correct.
                         </div>
                     </div>
                 </div>
@@ -23,14 +23,14 @@
                 <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body">
-                            You got x cards incorrect.
+                            You got {{ $incorrect_answers }} cards incorrect.
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body">
-                            You skipped x cards.
+                            You skipped {{ $skipped_questions }} cards.
                         </div>
                     </div>
                 </div>

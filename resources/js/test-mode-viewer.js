@@ -5,7 +5,6 @@ window.correct_answers = 0;
 window.incorrect_answers = 0;
 window.answer_array = [];
 
-endGameRound = false;
 // https://stackoverflow.com/a/11486026/2697955
 // wording changed slightly although function remains the same.
 // not sure what ret += "" is for?
@@ -114,27 +113,39 @@ function set_up_answer_array() {
 
 function isItEndOfTheRoad() {
 
-    if (endGameRound == true) {
-        console.log("End Game");
-        $('.submit-test').submit();
-    }
-
     if (window.current_slide_ticker == window.flashcards.length) {
         $('#right_button').css('background-color', '#ffc400');
         $('#tick_button').css('background-color', '#ffc400');
         $('#cross_button').css('background-color', '#ffc400');
         $('#tick_button').removeClass('bg-success');
         $('#cross_button').removeClass('bg-danger');
-        endGameRound = true;
     } else {
         $('#right_button').css("background-color", "");
         $('#tick_button').css("background-color", "");
         $('#cross_button').css("background-color", "");
         $('#tick_button').addClass('bg-success');
         $('#cross_button').addClass('bg-danger');
-        endGameRound = false;
     }
 
+}
+
+function isItEndGame() {
+
+
+    skipped_questions = window.current_slide_ticker - (incorrect_answers + correct_answers);
+
+    // Set hidden inputs.
+    $('.submit-test input[name="skipped_questions"]').val(skipped_questions);
+    $('.submit-test input[name="correct_answers"]').val(correct_answers);
+    $('.submit-test input[name="incorrect_answers"]').val(incorrect_answers);
+    $('.submit-test input[name="time"]').val(startTime.toISOString());
+
+    // End game if golden buttons clicked.
+    if (window.current_slide_ticker == window.flashcards.length && ($('#tick_button').css('background-color') == 'rgb(255, 196, 0)')) {
+        // If we are on the last slide page and a golden button has been pressed, gold must match exactly.
+        console.log("End Game");
+        $('.submit-test').submit();
+    }
 }
 
 
@@ -158,7 +169,9 @@ $('document').ready(function() {
         incorrectProgress();
         // progress slide.
         nextSlide();
+        isItEndGame();
         isItEndOfTheRoad();
+
     });
 
     document.getElementById("tick_button").addEventListener("click", function() {
@@ -169,7 +182,9 @@ $('document').ready(function() {
         correctProgress();
         // progress slide.
         nextSlide();
+        isItEndGame();
         isItEndOfTheRoad();
+
     });
 
     document.getElementById("left_button").addEventListener("click", function() {
@@ -183,7 +198,9 @@ $('document').ready(function() {
         // All previously entered answers will need to be submitted from the moment you
         // backtracked.
         setProgressBars();
+        isItEndGame();
         isItEndOfTheRoad();
+
     });
 
 });
