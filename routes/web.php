@@ -39,7 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/flashcards/study/{set}/study-mode", ['as' => 'study.study-mode', 'uses' => 'App\Http\Controllers\StudyModeController@StudyMode']);
     Route::get("/flashcards/study/{set}/test-mode", ['as' => 'study.test-mode', 'uses' => 'App\Http\Controllers\StudyModeController@TestMode']);
     Route::post("/flashcards/study/{set}/test-mode-complete", ['as' => 'study.test-mode-complete', 'uses' => 'App\Http\Controllers\StudyModeController@TestModeComplete']);
+    Route::post("/flashcards/study/{set}/results/{test_result}", ['as' => 'study.test-mode-complete', 'uses' => 'App\Http\Controllers\StudyModeController@TestResult']);
 
+    //return redirect("/flashcards/sets/" . $set->id . "/results/" . $testResult->id);
     //Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
 });
 
