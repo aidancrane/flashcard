@@ -38,4 +38,10 @@ class StudyModeController extends Controller
 
         return redirect("/flashcards/sets/" . $set->id . "/results/" . $testResult->id);
     }
+
+    public function TestResult(Request $request, Set $set, TestModeResult $testResult)
+    {
+        // Lacking security
+        return view('study.flashcard-test-mode-complete')->with('set', $set)->with('testResult', $testResult);
+    }
 }
