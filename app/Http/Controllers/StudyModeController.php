@@ -41,7 +41,8 @@ class StudyModeController extends Controller
 
     public function TestResult(Request $request, Set $set, TestModeResult $testResult)
     {
-        // Lacking security
+        $this->authorize('view', $set);
+        
         return view('study.flashcard-test-mode-complete')->with('set', $set)->with('testResult', $testResult);
     }
 }
