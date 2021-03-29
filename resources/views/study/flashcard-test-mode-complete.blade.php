@@ -15,7 +15,7 @@
                 <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body">
-                            You got {{ $correct_answers }} cards correct.
+                            You got {{ $testResult->correct_answers }} cards correct.
                         </div>
                     </div>
                 </div>
@@ -23,14 +23,14 @@
                 <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body">
-                            You got {{ $incorrect_answers }} cards incorrect.
+                            You got {{ $testResult->incorrect_answers }} cards incorrect.
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body">
-                            You skipped {{ $skipped_questions }} cards.
+                            You skipped {{ $testResult->skipped_questions }} cards.
                         </div>
                     </div>
                 </div>
