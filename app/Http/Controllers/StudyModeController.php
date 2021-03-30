@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Set;
 use App\Models\TestModeResult;
 use App\Http\Requests\SubmitTestResults;
+use Carbon\Carbon;
 
 class StudyModeController extends Controller
 {
@@ -31,6 +32,8 @@ class StudyModeController extends Controller
         $testResult->skipped_questions = $result->skipped_questions;
         $testResult->correct_answers = $result->correct_answers;
         $testResult->incorrect_answers = $result->incorrect_answers;
+        $testResult->start_time = Carbon::parse($result->time)->setTimezone('Europe/London');
+        $testResult->end_time = Carbon::now();
         $testResult->set_id = $set->id;
         $testResult->owner_id = auth()->user()->id;
 
@@ -42,7 +45,7 @@ class StudyModeController extends Controller
     public function TestResult(Request $request, Set $set, TestModeResult $testResult)
     {
         $this->authorize('view', $set);
-        
+
         return view('study.flashcard-test-mode-complete')->with('set', $set)->with('testResult', $testResult);
     }
 }

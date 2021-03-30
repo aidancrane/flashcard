@@ -20,6 +20,8 @@ class TestModeResult extends Migration
             $table->integer('skipped_questions')->default(0);
             $table->integer('correct_answers')->default(0);
             $table->integer('incorrect_answers')->default(0);
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('set_id')->references('id')->on('set')->onDelete('cascade');
             $table->timestamps();
