@@ -51,7 +51,7 @@
                                     <div class="col border rounded p-2" id="left_button"><span class="mdi mdi-arrow-left mdi-24px"></span></div>
                                     <div class="col border rounded p-2" id="right_button"><span class="mdi mdi-arrow-right mdi-24px"></span></div>
                                 </div>
-                                <div class="text-center pt-1" id="timer">timer</div>
+                                <div class="text-center pt-1" id="timer">0:00</div>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
         </div>
     </div>
 </main>
-<form class="submit-test" method="post" action="/flashcards/study/{{ $set->id }}/test-mode-complete">
+<form hidden class="submit-test" method="post" action="/flashcards/study/{{ $set->id }}/test-mode-complete">
     @csrf
     <input name="skipped_questions" value="" />
     <input name="correct_answers" value="" />

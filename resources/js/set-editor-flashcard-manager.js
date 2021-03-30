@@ -28,13 +28,13 @@ let flashcard_toolbar = [{
     {
         name: "heading-smaller",
         action: EasyMDE.toggleHeadingSmaller,
-        className: "mdi mdi-18px mdi-format-header-decrease",
+        className: "mdi mdi-18px mdi-format-header-increase",
         title: "Smaller Heading",
     },
     {
         name: "heading-bigger",
         action: EasyMDE.toggleHeadingBigger,
-        className: "mdi mdi-18px mdi-format-header-increase",
+        className: "mdi mdi-18px mdi-format-header-decrease",
         title: "Bigger Heading",
     },
     "|",
@@ -104,8 +104,12 @@ function flashcard_easyMDE_watch() {
             new EasyMDE({
                 autofocus: true,
                 autoDownloadFontAwesome: false,
+                indentWithTabs: false,
                 toolbar: flashcard_toolbar,
                 element: document.getElementById(textarea.id),
+                shortcuts: {
+                  "toggleCodeBlock": null, // unbind Ctrl-Alt-C
+                },
                 previewRender: function(plainText) {
                     return marked("<center>\n" + plainText + "</center>"); // Returns HTML from a custom parser
                 },
