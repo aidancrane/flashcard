@@ -4,5 +4,6 @@
     "/js/set-editor-metadata.js": "/js/set-editor-metadata.js",
     "/js/study-mode-viewer.js": "/js/study-mode-viewer.js",
     "/js/test-mode-viewer.js": "/js/test-mode-viewer.js",
+    "/js/charts.js": "/js/charts.js",
     "/css/app.css": "/css/app.css"
 }

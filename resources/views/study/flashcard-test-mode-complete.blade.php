@@ -59,7 +59,21 @@
                     </div>
                 </div>
             </div>
+            <div id="chart" style="height: 300px;"></div>
+
+            <script>
+                const chart = new Chartisan({
+                    el: '#chart',
+                    url: "@chart('set_cram_results')",
+                    hooks: new ChartisanHooks()
+                        .colors(['#4299E1']),
+                });
+            </script>
         </div>
     </div>
 </main>
 @stop
+
+@push('scripts')
+<script src="{{ asset('js/charts.js') }}"></script>
+@endpush

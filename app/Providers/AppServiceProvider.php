@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
         Schema::defaultStringLength(191);
 
@@ -37,5 +38,9 @@ class AppServiceProvider extends ServiceProvider
         \Blade::directive('endrole', function () {
             return "<?php }; ?>";
         });
+
+        $charts->register([
+            \App\Charts\SetCramResults::class
+        ]);
     }
 }

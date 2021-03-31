@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d51313c8412df8aae050afca3f0cba5",
+    "content-hash": "07c02e170ac46d6f431f145fb10bef8c",
     "packages": [
         {
             "name": "asahasrabuddhe/laravel-mjml",

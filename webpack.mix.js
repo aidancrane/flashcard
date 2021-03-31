@@ -18,3 +18,6 @@ mix.js('resources/js/set-editor-flashcard-manager.js', 'public/js/set-editor-fla
 mix.js('resources/js/set-editor-metadata.js', 'public/js/set-editor-metadata.js');
 mix.js('resources/js/study-mode-viewer.js', 'public/js/study-mode-viewer.js');
 mix.js('resources/js/test-mode-viewer.js', 'public/js/test-mode-viewer.js');
+mix.js('resources/js/charts.js', 'public/js/charts.js');
+
+//mix.postCss('resources/css/charts.css', 'public/css');
