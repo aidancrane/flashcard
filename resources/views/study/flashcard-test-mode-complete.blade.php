@@ -66,7 +66,12 @@
                     el: '#chart',
                     url: "@chart('set_cram_results')",
                     hooks: new ChartisanHooks()
-                        .colors(['#4299E1']),
+                        .colors(['#38c172', '#DC143C', '#4299E1', '#EAEAEA'])
+                        .datasets(['bar', 'bar', 'bar', {
+                            type: 'line',
+                            fill: false
+                        }])
+                        .beginAtZero(),
                 });
             </script>
         </div>
