@@ -7,8 +7,10 @@ namespace App\Charts;
 use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
+use App\Models\Set;
 use Carbon\Carbon;
 use App\Models\TestModeResult;
+use Gate;
 
 class SetCramResults extends BaseChart
 {
@@ -19,6 +21,8 @@ class SetCramResults extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+
+     Gate::authorize('view', Set::where('id', $request->set_id)->first());
 
         $oneMonthAgo = Carbon::now()->subMonths(1)->startOfDay();
         $dates = [];
@@ -33,8 +37,7 @@ class SetCramResults extends BaseChart
           $oneMonthAgo->add(1, 'day');
 
 
-
-          $test_results = TestModeResult::whereBetween('created_at', [$curr, $oneMonthAgo]);
+          $test_results = TestModeResult::where('owner_id', auth()->user()->id)->where('set_id', $request->set_id)->whereBetween('created_at', [$curr, $oneMonthAgo]);
 
           $local_correct_cards = 0;
           $local_incorrect_cards = 0;
@@ -55,7 +58,7 @@ class SetCramResults extends BaseChart
           array_push($correct_cards, $local_correct_cards);
           array_push($incorrect_cards, $local_incorrect_cards);
           array_push($skipped_cards, $local_skipped_cards);
-            array_push($test_count, $local_test_count);
+          array_push($test_count, $local_test_count);
 
 
         }

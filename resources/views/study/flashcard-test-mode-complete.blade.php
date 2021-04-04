@@ -64,7 +64,7 @@
             <script>
                 const chart = new Chartisan({
                     el: '#chart',
-                    url: "@chart('set_cram_results')",
+                    url: "@chart('set_cram_results', ['set_id' => $set->id])",
                     hooks: new ChartisanHooks()
                         .colors(['#38c172', '#DC143C', '#4299E1', '#EAEAEA'])
                         .datasets(['bar', 'bar', 'bar', {
