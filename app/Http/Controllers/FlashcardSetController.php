@@ -33,7 +33,7 @@ class FlashcardSetController extends Controller
      */
     public function index()
     {
-        return view("flashcard-sets");
+        return view("sets.flashcard-sets");
     }
 
     // Display index datatables.
@@ -55,7 +55,7 @@ class FlashcardSetController extends Controller
      */
     public function create()
     {
-        return view("new-set");
+        return view("sets.new-set");
     }
 
 
@@ -136,7 +136,7 @@ class FlashcardSetController extends Controller
             $flashcards = $set->flashcards()->orderBy('flashcard_order')->get();
 
             // Return view (duh).
-            return view("set-editor")->with('set', $set)->with('flashcards', $flashcards);
+            return view("sets.set-editor")->with('set', $set)->with('flashcards', $flashcards);
         } else {
             // No, they have been banned or something.
             request()->session()->flash('message', 'You aren\'t allowed to access that flashcard set! Try asking the owner for permission.');
