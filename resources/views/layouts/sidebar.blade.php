@@ -15,7 +15,7 @@
                     </li>
                     <li>
                         <span class="mdi mdi-chart-line mdi-24px"></span>
-                        <span class="menu-text">My Stats</span>
+                        <span class="menu-text"><a href="/statistics" class="no-text-decoration text-white">My Stats</a></span>
                     </li>
                     <li>
                         <span class="mdi mdi-account-outline mdi-24px"></span>

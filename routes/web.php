@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/flashcards/sets/{set}/results/{test_result}", ['as' => 'study.test-mode-view', 'uses' => 'App\Http\Controllers\StudyModeController@TestResult']);
     //return redirect("/flashcards/sets/" . $set->id . "/results/" . $testResult->id);
     //Route::resource("/flashcards", 'App\Http\Controllers\FlashcardController');
+
+    Route::get("/statistics", ['as' => 'statistics.user', 'uses' => 'App\Http\Controllers\StatisticsController@MyStatistics']);
 });
 
 Route::get('/pages/privacy-policy', function () {

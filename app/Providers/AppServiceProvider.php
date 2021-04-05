@@ -40,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $charts->register([
-            \App\Charts\SetCramResults::class
+            \App\Charts\SetCramResults::class,
+            \App\Charts\FlashcardChart::class,
         ]);
     }
 }

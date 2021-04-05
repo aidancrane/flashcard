@@ -72,5 +72,5 @@ class SetCramResults extends BaseChart
             ->dataset('Skipped Cards', $skipped_cards)
             ->dataset('Tests', $test_count);
 
-}
+          }
 }
