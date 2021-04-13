@@ -65,40 +65,80 @@
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#FAQaccordion">
                             <div class="accordion-body">
-                                Currently, Flashcard Club has the following features,
+                                <h3>Version 0.0.2</h3>
                                 <ul>
-                                    <li>User Accounts,</li>
+                                    <li>User Accounts</li>
+                                    <ul>
+                                        <li>You can now create new user accounts and update their details.</li>
+                                        <li>New users will recieve a welcome email.</li>
+                                        <li>New users should be logged in automatically.</li>
+                                        <li>New users should be able to create flashcards and flashcard sets.</li>
+                                    </ul>
+                                    <li>Flashcards</li>
+                                    <ul>
+                                        <li>Flashcards can now be loaded, saved, created and updated.</li>
+                                        <li>Flascards use markdown syntax so you can include pictures and <del>a limited amount of html</del> thats it.</li>
+                                    </ul>
+                                    <li>Unit Tests</li>
+                                    <ul>
+                                        <li>Code coverage is very very poor.</li>
+                                    </ul>
+                                    <li>Study Mode</li>
+                                    <ul>
+                                        <li>Study mode now works perfectly.</li>
+                                        <li>You can now choose between study mode and test mode.</li>
+                                        <li>Test Mode is perfect for cramming.</li>
+                                    </ul>
+                                    <li>Study Statistics</li>
+                                    <ul>
+                                        <li>Test mode now records time taken to complete study as well as flashcard test outcome.</li>
+                                        <li>Useful for tracking study and cramming progress over the last 30 days.</li>
+                                        <li>Many features of study mode available in test mode and vice versa.</li>
+                                    </ul>
+                                    <li>Planned Features</li>
+                                    <ul>
+                                        <li>Google Sign in (Federated identity)</li>
+                                        <li>Terms of service</li>
+                                        <li>Privacy Policy</li>
+                                        <li>FAQ Page</li>
+                                        <li>Markdown User Guide</li>
+                                        <li>Flashcard user guide</li>
+                                        <li>Front page needs work</li>
+                                    </ul>
+                                </ul>
+                                <h3>Version 0.0.1</h3>
+                                <ul>
+                                    <li>User Accounts</li>
                                     <ul>
                                         <li>It's currently possible to create a new user account, although there is no ability to ammend or update your user account.</li>
                                         <li>New users should recieve a welcome email.</li>
                                         <li>New users should be logged in automatically.</li>
                                         <li>New users should be able to create flashcards and flashcard sets.</li>
                                     </ul>
-                                    <li>Almost Unlimited Flashcards,</li>
+                                    <li>Almost Unlimited Flashcards</li>
                                     <ul>
                                         <li>It is possible to create and save flashcards.</li>
                                         <li>You can also update flashcards, delete them and more.</li>
                                         <li>Flascards use markdown syntax so you can include pictures and a limited amount of html.</li>
                                     </ul>
-                                    <li>Unit Tests,</li>
+                                    <li>Unit Tests</li>
                                     <ul>
                                         <li>Many components of Flashcard Club have PHPunit Unit tests.</li>
                                         <li>Code coverage is probably very poor.</li>
                                     </ul>
-                                    <li>Toast Notifications,</li>
+                                    <li>Toast Notifications</li>
                                     <ul>
                                         <li>Toast notifications are intergrated into the website.</li>
                                         <li>The best place to see these in action is in the set editor if you update the title.</li>
                                     </ul>
+                                    <li>Planned Features</li>
+                                    <ul>
+                                        <li><del>A Study mode, because currently it is only possible to edit flashcards but not view them without the editor.</del> Completed</li>
+                                        <li>Google Sign in (Federated identity).</li>
+                                        <li><del>Statistics, because who doesn't love a good graph.</del> Completed</li>
+                                        <li><del>Account management, because currently once you make an account you cant change any of your details, oops.</del> Completed</li>
+                                    </ul>
                                 </ul>
-                                Planned features include,
-                                <ul>
-                                    <li>A Study mode, because currently it is only possible to edit flashcards but not view them without the editor.</li>
-                                    <li>Google Sign in (Federated identity).</li>
-                                    <li>Statistics, because who doesn't love a good graph.</li>
-                                    <li>Account management, because currently once you make an account you cant change any of your details, oops.</li>
-                                </ul>
-
                                 Currently statistics and study mode do not work.
                             </div>
                         </div>
