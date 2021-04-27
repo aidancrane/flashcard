@@ -79,7 +79,7 @@
         </div>
     </div>
     <div class="text-center">
-        <a class="btn btn-success btn-lg text-white" href="/dashboard" role="button">Get Started</a>
+        <a class="btn btn-success btn-lg text-white" href="/login" role="button">Get Started</a>
     </div>
     <svg viewBox="0 0 1440 124">
         <path fill="#8ed1fcff"

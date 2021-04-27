@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class Login extends Controller
+class LoginController extends Controller
 {
     public function Login()
     {
+      if (Auth::check()) {
+            return redirect("/dashboard");
+      }
         return view('login');
     }
 

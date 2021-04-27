@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Jobs\SendRegistrationEmail;
 use Illuminate\Support\Facades\Auth;
 
-class Register extends Controller
+class RegisterController extends Controller
 {
     public function Main()
     {

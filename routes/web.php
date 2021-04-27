@@ -15,19 +15,19 @@ use App\Models\Set;
 */
 
 
-Route::get("/login", ['as' => 'login.login', 'uses' => 'App\Http\Controllers\Login@Login']);
-Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\Login@CheckLogin']);
+Route::get("/login", ['as' => 'login.login', 'uses' => 'App\Http\Controllers\LoginController@Login']);
+Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\LoginController@CheckLogin']);
 
-Route::get("/register", ['as' => 'register.first', 'uses' => 'App\Http\Controllers\Register@Main']);
-Route::post("/register", ['as' => 'register.second', 'uses' => 'App\Http\Controllers\Register@MakeAccount']);
+Route::get("/register", ['as' => 'register.first', 'uses' => 'App\Http\Controllers\RegisterController@Main']);
+Route::post("/register", ['as' => 'register.second', 'uses' => 'App\Http\Controllers\RegisterController@MakeAccount']);
 
-Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\Dashboard@Landing']);
+Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\DashboardController@Landing']);
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\Dashboard@Dashboard']);
+    Route::get("/dashboard", ['as' => 'dashboard.dashboard', 'uses' => 'App\Http\Controllers\DashboardController@Dashboard']);
 
-    Route::post("/logout", ['as' => 'login.logout', 'uses' => 'App\Http\Controllers\Login@Logout']);
+    Route::post("/logout", ['as' => 'login.logout', 'uses' => 'App\Http\Controllers\LoginController@Logout']);
 
     Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
     Route::post("/sets/delete", ['as' => 'sets.delete-from-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@delete_from_index']);
