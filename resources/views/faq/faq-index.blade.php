@@ -9,18 +9,56 @@
             Frequently Asked Questions
         </div>
         <div class="card-body">
-            <h3>How Can I Make Flashcards?</h3>
-            You can make flashcards by accessing your dashboard
-            (make sure you're logged in) and clicking on the "Make new Set" tab.
-            <br>
-            Name your new set and you should be set up and good to go.
-            <h3>Can I Share Flashcards With Other Users?</h3>
-            No, currently not at this time.
-            <h3>How Can I Add Images and Styles to My Flashcards?</h3>
-            Flashcards on flashcard club make use of marked and a markdown editor. You can read about how to wirte markdown <a href="#">here</a>.
-            <h3>How Can I Edit My Account Details?</h3>
-            You can edit your account details by clicking on the "My Account" tab from the dashboard.
+            <h3>Welcome to the FAQ</h3>
+            Use this page to find answers to common questions about flashcard club.
         </div>
+
+
+        <div class="accordion accordion-flush" id="accordionFAQ">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Is Flashcard Club Free?
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        For the current time being, yes. Flashcard Club is free. There are no restrictions.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Is Flashcard Club's source code available?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        Soon, but not quite yet.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Can I use Flashcard Club now?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        Yes! Flashcard Club is still young. But I feel now is a good time to work on user aquisition.
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
 </div>
+
+
+
+
 @stop
