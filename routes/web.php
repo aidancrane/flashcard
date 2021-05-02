@@ -67,5 +67,5 @@ Route::get('/auth/google/redirect', function () {
 
 Route::get('/auth/google/callback', function () {
     $user = Socialite::driver('google')->user();
-    // $user->token
+    dd($user->token);
 });
