@@ -44,8 +44,8 @@
                             <div class="card py-5" id="page_first_card" style="--animate-duration:0.1s;">
                                 <div class="card-body py-5" id="page_first_card_body">
                                     <center class="ugc-center ">
-                                        <h1 class="pt-5 pb-5" style="white-space: nowrap;">Simple Tap-to-Flip Flashcards</h1>
-
+                                        {{-- <h1 class="pt-5 pb-5" style="white-space: nowrap;">Simple Tap-to-Flip Flashcards</h1> --}}
+                                        <h1 class="pt-5 pb-5">Simple <span style="white-space: nowrap;">Tap-to-Flip</span> Flashcards</h1>
                                     </center>
                                 </div>
                             </div>

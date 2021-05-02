@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 use App\Models\Set;
 
 /*
@@ -58,4 +59,13 @@ Route::get('/pages/privacy-policy', function () {
 
 Route::get('/pages/application-terms-of-service', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');
+});
+
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/auth/google/callback', function () {
+    $user = Socialite::driver('google')->user();
+    // $user->token
 });
