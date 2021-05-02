@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Socialite;
+namespace App\Http\Controllers\SocialiteControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -22,6 +22,8 @@ class GoogleOAuthController extends Controller
         $user = Socialite::driver('google')->user();
 
         $own_user = User::where("email_address", $user->getEmail())->first();
+
+        dd($user->getRaw());
 
         if (!($user->email_verified == true))
         {
