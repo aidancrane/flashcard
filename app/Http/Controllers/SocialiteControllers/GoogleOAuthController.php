@@ -20,10 +20,11 @@ class GoogleOAuthController extends Controller
       public function GoogleCallback()
       {
         $user = Socialite::driver('google')->user();
+        $user = $user->getRaw();
 
         $own_user = User::where("email_address", $user->getEmail())->first();
 
-        dd($user->getRaw());
+        dd();
 
         if (!($user->email_verified == true))
         {
