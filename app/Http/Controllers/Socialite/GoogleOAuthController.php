@@ -18,9 +18,9 @@ class GoogleOAuthController extends Controller
       {
         $user = Socialite::driver('google')->user();
 
-        dd($user):
+        dd($user);
 
-        $own_user = User:where();
+        $own_user = User::where();
 
         $user->getEmail();
       }
