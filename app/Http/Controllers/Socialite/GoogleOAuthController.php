@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Auth;
 
 class GoogleOAuthController extends Controller
 {
@@ -18,11 +19,63 @@ class GoogleOAuthController extends Controller
       {
         $user = Socialite::driver('google')->user();
 
-        dd($user);
+        $own_user = User::where("email_address", $user->getEmail())->first();
 
-        $own_user = User::where();
+        if (!($user->email_verified == true))
+        {
+          // User is logging in with an account from google that doesn't have a verified email address.
+          // We don't do that here.
+          return view("errors.socialite-email-not-verified");
+        }
 
-        $user->getEmail();
+        if ($own_user)
+        {
+          // Account exists locally.
+          if (strlen($own_user->google_user_id) > 0)
+          {
+            // User already has a google account on their local account.
+            if ($own_user->google_user_id == $user->id)
+            {
+              // User has logged in before with their google account.
+              // And the google id matches.
+              Auth::login($own_user);
+            }
+            else {
+              // User is logging in with an account different from the normal.
+              // And the google account id does not match.
+              return view("errors.socialite-email-not-verified");
+            }
+          }
+          else
+          {
+            // Account does exist locally but not with a google id.
+            $own_user->google_user_id = $user->id;
+            $own_user->save();
+            Auth::login($own_user);
+          }
+          // Send 'em back.
+          return view('landing');
+        }
+        else
+        {
+          // Account does not exist locally.
+
+          // Almost unique username, doesn't work if another user has a name like aidancrane1.
+          $user_count = User::where('first_name', '=', $user->given_name)
+                  ->where('last_name', '=', $user->family_name)->count();
+
+          $new_user = new User();
+          $new_user->google_user_id = $user->id;
+          $new_user->first_name =  $user->given_name;
+          $new_user->last_name =  $user->family_name;
+          $new_user->email_address =  $user->getEmail();
+          $new_user->save();
+          Auth::login($new_user);
+          SendRegistrationEmail::dispatch($new_user);
+          return view('landing');
+        }
+
+
       }
 
 }
