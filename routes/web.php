@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 use App\Models\Set;
 
 /*
@@ -61,11 +60,5 @@ Route::get('/pages/application-terms-of-service', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');
 });
 
-Route::get('/auth/google/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
-
-Route::get('/auth/google/callback', function () {
-    $user = Socialite::driver('google')->user();
-    dd($user->token);
-});
+Route::get("/auth/google/redirect", ['as' => 'login.google-redirect', 'uses' => 'App\Http\Controllers\Socialite\GoogleOAuthController@GoogleRedirect']);
+Route::get("/auth/google/callback", ['as' => 'login.google-callback', 'uses' => 'App\Http\Controllers\Socialite\GoogleOAuthController@GoogleCallback']);
