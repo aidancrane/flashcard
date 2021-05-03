@@ -23,18 +23,43 @@
                         @else
                         <p class="card-text"><small>Please enter your account details below to login.</small></p>
                         @endif
+                        <form method="POST" action="{{ route("login.check")  }}">
+                            @csrf
+                            @method("POST")
+                            <div class="form-group">
+                                <label for="email_address">Email Address</label>
+                                <input class="form-control" type="text" placeholder="Email Address" name="email_address" value="{{ old("email_address") }}" id="email_address">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" placeholder="Password" name="password" id="password">
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-1">
+                                    <input class="text-white btn btn-block btn-primary" type="submit" value="Sign in">
+                                </div>
+                                <div class="col-1">
+                                </div>
+                                <div class="col-3">
+                                    <div class="g-signin2">
+                                        <script>
+                                            function onSuccess(googleUser) {
+                                                console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                                                window.location.replace("/dashboard");
+                                            }
 
-                        {!! Form::open(['route' => 'login.check', 'method' => 'post']) !!}
-                        <div class="form-group">
-                            {!! Form::label('email_address', 'Email Address'); !!}
-                            {!! Form::text('email_address', null ,['class' => 'form-control', 'type' => 'email', 'placeholder' => 'Email Address']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('password', 'Password'); !!}
-                            {!! Form::password('password' ,['class' => 'form-control', 'type' => 'password', 'placeholder' => 'Password']) !!}
-                        </div>
-                        {!! Form::submit('Sign in', ['class' => 'text-white btn btn-block btn-primary mt-3']) !!}
-                        {!! Form::close() !!}
+                                            function renderButton() {
+                                                gapi.signin2.render('g-signin2', {
+                                                    'longtitle': true,
+                                                    'theme': 'dark',
+                                                    'onsuccess': onSuccess,
+                                                });
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                         <p class="pt-3 text-center"><small><a href="/register">Click here to register</a> if you don't have an account yet.</small></p>
                     </div>
                 </div>
@@ -44,3 +69,10 @@
     </div>
 </div>
 @stop
+
+@push('scripts')
+<meta name="google-signin-client_id" content="{{ env("GOOGLE_CLIENT_ID") }}">
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+
+@endpush

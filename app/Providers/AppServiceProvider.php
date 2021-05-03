@@ -31,14 +31,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        \Blade::directive('role', function ($roles) {
-            return "<?php if(auth()->user()->hasRole($roles)) { ?>";
-        });
-
-        \Blade::directive('endrole', function () {
-            return "<?php }; ?>";
-        });
-
         $charts->register([
             \App\Charts\SetCramResults::class,
             \App\Charts\FlashcardChart::class,

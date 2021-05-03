@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    public function Main()
+    public function Register()
     {
         return view('register');
     }

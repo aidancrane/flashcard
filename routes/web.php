@@ -18,7 +18,7 @@ use App\Models\Set;
 Route::get("/login", ['as' => 'login.login', 'uses' => 'App\Http\Controllers\LoginController@Login']);
 Route::post("/login", ['as' => 'login.check', 'uses' => 'App\Http\Controllers\LoginController@CheckLogin']);
 
-Route::get("/register", ['as' => 'register.first', 'uses' => 'App\Http\Controllers\RegisterController@Main']);
+Route::get("/register", ['as' => 'register.first', 'uses' => 'App\Http\Controllers\RegisterController@Register']);
 Route::post("/register", ['as' => 'register.second', 'uses' => 'App\Http\Controllers\RegisterController@MakeAccount']);
 
 Route::get("/", ['as' => 'dashboard.landing', 'uses' => 'App\Http\Controllers\DashboardController@Landing']);

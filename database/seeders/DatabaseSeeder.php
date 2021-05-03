@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         $aidan->email_address = "aidancrane78@gmail.com";
         $aidan->email_verified_at = now();
         $aidan->password = Hash::make('password');
-        $aidan->role = array('admin');
         $aidan->save();
 
         for ($k = 0 ; $k < 250; $k++) {

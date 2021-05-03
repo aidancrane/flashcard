@@ -42,23 +42,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'role' => 'array',
     ];
 
     public function sets()
     {
         return $this->hasMany('App\Models\Set', 'owner_id');
-    }
-
-    // Get the current user role as an array and compare it with the provided $roles.
-    public function hasRole($roles)
-    {
-        $roles = explode(',', str_replace("'", "", $roles));
-        foreach ($roles as $val) {
-            if (in_array($val, $this->role)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
