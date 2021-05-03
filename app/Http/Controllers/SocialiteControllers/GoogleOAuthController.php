@@ -8,6 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Jobs\SendRegistrationEmail;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 
 class GoogleOAuthController extends Controller
 {

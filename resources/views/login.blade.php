@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Landing Page')
+@section('title', 'Login')
 
 @section('content')
 <div class="pt-2">
@@ -34,30 +34,11 @@
                                 <label for="password">Password</label>
                                 <input class="form-control" type="password" placeholder="Password" name="password" id="password">
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-1">
-                                    <input class="text-white btn btn-block btn-primary" type="submit" value="Sign in">
-                                </div>
-                                <div class="col-1">
-                                </div>
-                                <div class="col-3">
-                                    <div class="g-signin2">
-                                        <script>
-                                            function onSuccess(googleUser) {
-                                                console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                                                window.location.replace("/dashboard");
-                                            }
-
-                                            function renderButton() {
-                                                gapi.signin2.render('g-signin2', {
-                                                    'longtitle': true,
-                                                    'theme': 'dark',
-                                                    'onsuccess': onSuccess,
-                                                });
-                                            }
-                                        </script>
-                                    </div>
-                                </div>
+                            <div class="row mt-2 py-1 px-3">
+                                <button class="btn btn-primary btn-block text-white shadow" type="submit">Sign in</button>
+                                {{-- Google logo originally from https://developers.google.com/identity/branding-guidelines --}}
+                                <a class="btn btn-block mt-4 shadow" style="font-family: 'Roboto';" href="/auth/google/redirect" role="button"> <img width="20px" alt="Google sign-in" src="{{ asset("/images/google.svg") }}" /> Sign in with
+                                    Google</a>
                             </div>
                         </form>
                         <p class="pt-3 text-center"><small><a href="/register">Click here to register</a> if you don't have an account yet.</small></p>
@@ -70,9 +51,6 @@
 </div>
 @stop
 
-@push('scripts')
-<meta name="google-signin-client_id" content="{{ env("GOOGLE_CLIENT_ID") }}">
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
-
+@push("scripts")
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 @endpush
