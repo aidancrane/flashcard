@@ -27,7 +27,7 @@
         "@mdi/font": "^5.9.55",
         "@popperjs/core": "^2.9.2",
         "bootstrap": "^5.0.0-beta3",
-        "chart.js": "^3.1.0",
+        "chart.js": "^3.2.1",
         "datatables.net": "^1.10.24",
         "datatables.net-bs4": "^1.10.24",
         "datatables.net-responsive": "^2.2.7",
