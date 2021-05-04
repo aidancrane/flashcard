@@ -63,7 +63,7 @@ class GoogleOAuthController extends Controller
             Auth::login($own_user);
           }
           // Send 'em back.
-          return view('landing');
+          return redirect('/dashboard');
         }
         else
         {
@@ -82,7 +82,7 @@ class GoogleOAuthController extends Controller
           $new_user->save();
           Auth::login($new_user);
           SendRegistrationEmail::dispatch($new_user);
-          return view('landing');
+          return redirect('/dashboard');
         }
 
 
