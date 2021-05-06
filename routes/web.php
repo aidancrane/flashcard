@@ -48,9 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get("/statistics", ['as' => 'statistics.user', 'uses' => 'App\Http\Controllers\StatisticsController@MyStatistics']);
 });
 
-Route::get('/faq', function () {
-    return view('faq.faq-index');
-});
+Route::get("/frequently-asked-questions", ['as' => 'help.faq', 'uses' => 'App\Http\Controllers\FAQController@FAQIndex']);
 
 Route::get('/pages/privacy-policy', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');

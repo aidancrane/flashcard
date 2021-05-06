@@ -33,7 +33,7 @@
                         </li>
 
                         <li class="nav-item active">
-                            <a class="nav-link" href="/faq">FAQ</a>
+                            <a class="nav-link" href="/frequently-asked-questions">FAQ</a>
                         </li>
 
                         {{-- STOP. There are multiple sidebars! This is the sidebar for mobile devices below!
