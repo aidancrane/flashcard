@@ -50,7 +50,7 @@
                             </li>
                             <li class="nav-item active">
                                 <span class="mdi mdi-light mdi-chart-line mdi-24px"></span>
-                                <span class="menu-text"><a href="/sets/create" class="no-text-decoration text-white">My Stats</a></span>
+                                <span class="menu-text"><a href="/statistics" class="no-text-decoration text-white">My Stats</a></span>
                             </li>
                             <li class="nav-item active">
                                 <span class="mdi mdi-light mdi-account-outline mdi-24px"></span>
