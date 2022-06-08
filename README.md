@@ -1,4 +1,4 @@
-# flashcard
+# Flashcard Club
 The flashcard.club's source code repository.
 
 # Example Environment File
@@ -31,3 +31,30 @@ QUEUE_CONNECTION=sync
 SESSION_DRIVER=database
 SESSION_LIFETIME=120
 ```
+# Local Installation for Development
+
+To install this application you will need to use a LAMP server configured with a virtual host to match the `APP_URL` above. The database password should also be changed.
+
+1. Set up a typical LAMP server, my favourite is an Ubuntu server image with apache,  
+    ```bash
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install apache2
+    sudo apt install mysql-server
+    sudo mysql_secure_installation # Follow the configuration options as needed
+    sudo apt install php libapache2-mod-php php-mysql
+    sudo apt install php-cli unzip
+    curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+    ```
+2. Set up your vhost and domain in apache, or leave it as the default, just make sure to remove the default website.
+3. Copy or pull the git repo to your development environment vhost folder, I typically use `/var/www/root/flashcard.club`
+3. Set up your .env file for laravel, use the example above and change the passwords.
+4. Run composer,
+   ```bash
+   composer install — optimize-autoloader — no-dev
+   composer update
+   php artisan migrate:fresh
+   php artisan db:seed
+   ```
+
+This should be all you need to get started.
