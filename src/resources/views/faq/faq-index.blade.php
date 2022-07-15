@@ -39,11 +39,38 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Changelog
+                                Where can I read the Privacy Policy?
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#FAQaccordion">
                             <div class="accordion-body">
+                                <strong>Good Question.</strong> You can read the Privacy Policy <a href="/pages/privacy-policy">here</a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Changelog
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#FAQaccordion">
+                            <div class="accordion-body">
+                                <h3>Version 0.0.4</h3>
+                                <ul>
+                                    <li>User Accounts</li>
+                                    <ul>
+                                        <li>User accounts signing in through google will be fully complete and out of testing soon..</li>
+                                    </ul>
+                                    <li>Landing Page</li>
+                                    <ul>
+                                        <li>Moved FAQ to non auth (not logged in) page.</li>
+                                    </ul>
+                                    <li>Flashcard Edit Page</li>
+                                    <ul>
+                                        <li>Limited the size of the flashcard editor to 150px.</li>
+                                    </ul>
+                                </ul>
                                 <h3>Version 0.0.3</h3>
                                 <ul>
                                     <li>User Accounts</li>

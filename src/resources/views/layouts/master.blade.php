@@ -27,14 +27,16 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home</a>
                         </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/frequently-asked-questions">FAQ</a>
+                        </li>
+
                         @auth
                         <li class="nav-item active">
                             <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
 
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/frequently-asked-questions">FAQ</a>
-                        </li>
 
                         {{-- STOP. There are multiple sidebars! This is the sidebar for mobile devices below!
                              STOP. To update the navbar for desktop devices you will also need to update the layouts.sidebar.blade.php --}}

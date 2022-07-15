@@ -50,9 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get("/frequently-asked-questions", ['as' => 'help.faq', 'uses' => 'App\Http\Controllers\FAQController@FAQIndex']);
 
-Route::get('/pages/privacy-policy', function () {
-    return view('contact aidancrane78@gmail.com and tell him this is missing.');
-});
+Route::get("/pages/privacy-policy", ['as' => 'help.privacy-policy', 'uses' => 'App\Http\Controllers\FAQController@PrivacyPolicy']);
+
 
 Route::get('/pages/application-terms-of-service', function () {
     return view('contact aidancrane78@gmail.com and tell him this is missing.');

@@ -102,6 +102,7 @@ function flashcard_easyMDE_watch() {
         if (!(easymde_textareas.indexOf(textarea.id) >= 0)) { // If the current textarea is not in the list of easymde_textareas.
             easymde_textareas.push(textarea.id);
             new EasyMDE({
+                maxHeight: "140px",
                 autofocus: true,
                 autoDownloadFontAwesome: false,
                 indentWithTabs: false,
