@@ -58,3 +58,15 @@ To install this application you will need to use a LAMP server configured with a
    ```
 
 This should be all you need to get started.
+
+
+# To deploy from docker
+
+1. Set your .env or use the example provided.
+2. 
+    ```
+    docker-compose run --rm npm install
+    docker-compose run --rm composer install
+    docker-compose run --rm artisan config:clear
+    docker-compose run --rm artisan migrate:fresh --seed
+    ```
