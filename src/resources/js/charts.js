@@ -1,1 +1,1 @@
-import { Chartisan } from '@chartisan/chartjs'
+import { Chart } from 'chart.js/auto';

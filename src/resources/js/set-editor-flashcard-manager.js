@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify';
 
-var marked = require('marked');
+import { marked } from 'marked';
 
 var markedImages = require('marked-images');
 

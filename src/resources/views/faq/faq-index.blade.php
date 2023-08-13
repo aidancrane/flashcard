@@ -56,6 +56,14 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#FAQaccordion">
                             <div class="accordion-body">
+                                <h3>Version 0.0.5</h3>
+                                <ul>
+                                    <li>Charting Library</li>
+                                    <ul>
+                                        <li>Ported from Laravel Charts and Chartisan to Chart JS and Laravel Charts.</li>
+                                    </ul>
+                                    <li>Fixed bug with Markdown editor not loading on tests.</li>
+                                </ul>
                                 <h3>Version 0.0.4</h3>
                                 <ul>
                                     <li>User Accounts</li>

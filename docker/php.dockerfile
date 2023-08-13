@@ -10,8 +10,12 @@ WORKDIR /var/www/html
 
 RUN docker-php-ext-install pdo pdo_mysql
 
-RUN chown -R www-data:www-data /var/www
-RUN chmod -R 755 .
+#RUN chown -R www-data:www-data /var/www
+#RUN chown -R www-data:www-data /var/www/html/storage
+RUN chmod -R 777 /var/www
+
+#RUN sudo chown -R www-data:www-data /var/www/html \
+#    && sudo chmod 777 -R /var/www/html \
 
 # RUN mkdir -p /usr/src/php/ext/redis \
 #     && curl -L https://github.com/phpredis/phpredis/archive/5.3.4.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \

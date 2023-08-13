@@ -6,13 +6,15 @@
 <main role="main">
     <div class="card">
         <div class="card-body">
-            <div id="chart" style="height: 300px;"></div>
+            {!! $chart->container() !!}
 
-            <script>
-                const chart = new Chartisan({
+
+           {{-- <div id="chart" style="height: 300px;"></div>
+             <script>
+                const chart = new Chart({
                     el: '#chart',
                     url: "@chart('flashcard_chart', ['user_id' => auth()->user()->id])",
-                    hooks: new ChartisanHooks()
+                    hooks: new ChartHooks()
                         .colors(['#38c172', '#DC143C', '#4299E1', '#EAEAEA'])
                         .datasets(['bar', 'bar', 'bar', {
                             type: 'line',
@@ -21,11 +23,14 @@
                         .beginAtZero(),
                 });
             </script>
-        </div>
+        </div> --}}
     </div>
 </main>
+{{-- <script src="{{ asset('js/charts.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+{!! $chart->script() !!}
 @stop
 
 @push('scripts')
-<script src="{{ asset('js/charts.js') }}"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> --}}
 @endpush

@@ -3,10 +3,16 @@ version: '3'
 networks:
   laravel:
 
+volumes:
+  database:
+    driver: local
+  redis:
+    driver: local
+    
 services:
   site:
     build:
-      context: ../.docker
+      context: ../docker
       dockerfile: nginx.dockerfile
     container_name: nginx
     ports:
@@ -22,7 +28,7 @@ services:
       - laravel
 
   mysql:
-    image: mariadb:10.6
+    image: mariadb:latest
     container_name: mysql
     restart: unless-stopped
     tty: true
@@ -37,6 +43,8 @@ services:
       SERVICE_NAME: mysql
     networks:
       - laravel
+    volumes:
+      - database:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -57,7 +65,7 @@ services:
 
   php:
     build:
-      context: ../.docker
+      context: ../docker
       dockerfile: php.dockerfile
     container_name: php
     volumes:
@@ -73,10 +81,12 @@ services:
       - 6379:6379
     networks:
       - laravel
+    volumes:
+      - redis:/data
 
   composer:
     build:
-      context: ../.docker
+      context: ../docker
       dockerfile: composer.dockerfile
     container_name: composer
     volumes:
@@ -89,13 +99,10 @@ services:
       - laravel
 
   npm:
-    image: node:latest
+    image: node:current
     container_name: npm
     volumes:
       - ../src:/var/www/html
-    ports:
-      - 3000:3000
-      - 3001:3001
     working_dir: /var/www/html
     entrypoint: ['npm']
     networks:
@@ -103,7 +110,7 @@ services:
 
   ncu:
     build:
-      context: ../.docker
+      context: ../docker
       dockerfile: ncu.dockerfile
     container_name: ncu
     volumes:
@@ -127,7 +134,7 @@ services:
 
   artisan:
     build:
-      context: ../.docker
+      context: ../docker
       dockerfile: php.dockerfile
     container_name: artisan
     volumes:

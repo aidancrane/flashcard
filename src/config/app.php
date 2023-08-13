@@ -177,6 +177,7 @@ return [
 
         // Custom Providers.
         Yajra\DataTables\DataTablesServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
     ],
 
