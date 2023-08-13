@@ -20,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TelescopeServiceProvider::class);
             \Laravel\Telescope\Telescope::ignoreMigrations();
         }
+        else
+        {
+            $this->app['request']->server->set('HTTPS', true);
+        }
     }
 
     /**
