@@ -36,7 +36,7 @@ services:
       - 3306:3306
     environment:
       MYSQL_DATABASE: flashcard
-      MYSQL_USER: flashcard
+      MYSQL_USER: root
       MYSQL_PASSWORD: whypassword492
       MYSQL_ROOT_PASSWORD: whypassword492
       SERVICE_TAGS: dev
