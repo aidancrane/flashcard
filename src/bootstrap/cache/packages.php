@@ -13,29 +13,18 @@
       0 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
     ),
   ),
-  'fruitcake/laravel-cors' => 
+  'laravel/sail' => 
   array (
     'providers' => 
     array (
-      0 => 'Fruitcake\\Cors\\CorsServiceProvider',
+      0 => 'Laravel\\Sail\\SailServiceProvider',
     ),
   ),
-  'laravel/socialite' => 
+  'laravel/sanctum' => 
   array (
     'providers' => 
     array (
-      0 => 'Laravel\\Socialite\\SocialiteServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Socialite' => 'Laravel\\Socialite\\Facades\\Socialite',
-    ),
-  ),
-  'laravel/telescope' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Telescope\\TelescopeServiceProvider',
+      0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     ),
   ),
   'laravel/tinker' => 
@@ -43,13 +32,6 @@
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
-  'laravel/ui' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
   'laravelcollective/html' => 
@@ -64,15 +46,15 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
-  'maatwebsite/excel' => 
+  'livewire/livewire' => 
   array (
     'providers' => 
     array (
-      0 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+      0 => 'Livewire\\LivewireServiceProvider',
     ),
     'aliases' => 
     array (
-      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
+      'Livewire' => 'Livewire\\Livewire',
     ),
   ),
   'nesbot/carbon' => 
@@ -119,6 +101,13 @@
     'providers' => 
     array (
       0 => 'Yajra\\DataTables\\EditorServiceProvider',
+    ),
+  ),
+  'yajra/laravel-datatables-export' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Yajra\\DataTables\\ExportServiceProvider',
     ),
   ),
   'yajra/laravel-datatables-fractal' => 
