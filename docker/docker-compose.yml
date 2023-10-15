@@ -120,11 +120,13 @@ services:
     networks:
       - laravel
 
-  npm-watch:
+  vite:
     build:
       context: ../docker
-      dockerfile: npm-watch.dockerfile
-    container_name: npm-watch
+      dockerfile: vite.dockerfile
+    container_name: vite
+    ports:
+      - 5173:5173
     volumes:
       - ../src:/var/www/html
     depends_on:

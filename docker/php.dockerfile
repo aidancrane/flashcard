@@ -13,6 +13,7 @@ RUN docker-php-ext-install pdo pdo_mysql
 #RUN chown -R www-data:www-data /var/www
 #RUN chown -R www-data:www-data /var/www/html/storage
 RUN chmod -R 777 /var/www
+#RUN chmod o+w /var/www/html/storage -R
 
 #RUN sudo chown -R www-data:www-data /var/www/html \
 #    && sudo chmod 777 -R /var/www/html \
