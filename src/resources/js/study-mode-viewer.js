@@ -1,8 +1,8 @@
 // Import modules for npm to minify.
 import DOMPurify from 'dompurify';
-import { marked } from 'marked';
 
-var markedImages = require('marked-images');
+import { marked } from 'marked';
+import markedImages from 'marked-images';
 
 console.log(marked('I am using markdown.'));
 

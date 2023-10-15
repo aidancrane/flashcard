@@ -4,6 +4,7 @@ window.timer_started = false;
 window.correct_answers = 0;
 window.incorrect_answers = 0;
 window.answer_array = [];
+let skipped_questions;
 
 // https://stackoverflow.com/a/11486026/2697955
 // wording changed slightly although function remains the same.
@@ -25,10 +26,10 @@ function timedEvent() {
     // If the timer is not started, start it.
     if (!window.timer_started) {
         timer_started = true;
-        startTime = new Date();
+        window.startTime = new Date();
         setInterval(function() {
-            endTime = new Date();
-            var timeDiff = endTime - startTime;
+            window.endTime = new Date();
+            var timeDiff = window.endTime - window.startTime;
             timeDiff /= 1000;
             var seconds = Math.round(timeDiff);
             //console.log(timeElapsedInSecondsMinutesHours(seconds));
@@ -54,6 +55,7 @@ function correctProgress() {
 
 function backtrackProgressBar() {
 
+    let i = 0;
     for (i = window.current_slide_ticker; i < window.flashcards.length; i++) {
         answer_array[i + 1] = "skipped";
     }
@@ -66,6 +68,7 @@ function setProgressBars() {
     // FIXME
     correct_answers = 0;
     incorrect_answers = 0;
+    let i = 0;
     for (i = 0; i < answer_array.length; i++) {
         var currentItem = answer_array[i + 1];
         if (currentItem == "correct") {
@@ -100,6 +103,7 @@ function set_up_answer_array() {
     // We need to make an array to start out.
     // By default every question is marked as skipped for "fastness".
     // bad code probs but it works?
+    let i = 0;
     for (i = 1; i <= window.flashcards.length; i++) {
         // We ignore the first element in answer_array[0] because flaschards are addressed by
         // their index.

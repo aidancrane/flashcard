@@ -1,9 +1,8 @@
-<html>
+<!DOCTYPE html>
 
 <head>
     <title>Flashcard Club - @yield('title')</title>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/sass/app.scss' , 'resources/js/app.js'])
     @stack('scripts')
     <link rel="icon" href="{{ asset('images/favicon.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -96,5 +95,3 @@
     <!-- Thanks for reading. -->
 </footer>
 @show
-
-</html>

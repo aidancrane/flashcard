@@ -170,6 +170,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/set-editor-metadata.js') }}"></script>
-<script src="{{ asset('js/set-editor-flashcard-manager.js') }}"></script>
+@vite(['resources/js/set-editor-metadata.js', 'resources/js/set-editor-flashcard-manager.js'])
 @endpush

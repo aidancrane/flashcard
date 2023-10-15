@@ -21,6 +21,7 @@
                 </thead>
             </table>
             <script>
+                window.addEventListener("load", function() {
                 $(function() {
                     var table = $('.set-table').DataTable({
                         processing: true,
@@ -84,6 +85,7 @@
                         ],
                     });
                 });
+            });
             </script>
         </div>
     </div>
