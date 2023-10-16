@@ -1,9 +1,9 @@
 import DOMPurify from 'dompurify';
 
 import { marked } from 'marked';
-import markedImages from 'marked-images';
+//import markedImages from 'marked-images';
 
-marked.use(markedImages());
+//marked.use(markedImages());
 
 
 // This file contains all the JS logic to interact with the set editor for

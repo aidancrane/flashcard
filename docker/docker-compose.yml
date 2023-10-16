@@ -99,7 +99,7 @@ services:
       - laravel
 
   npm:
-    image: node:current
+    image: node:current-alpine
     container_name: npm
     volumes:
       - ../src:/var/www/html

@@ -6,4 +6,7 @@ USER node
 
 WORKDIR /var/www/html
 
+# Suppress the update-notifier warning
+RUN npm config set update-notifier false
+
 ENTRYPOINT ["ncu"]

@@ -25,9 +25,11 @@
                 </div>
 
                 <script>
-                    $(document).ready(function() {
-                        $("#test-mode").click(function(event) {
-                            window.location.replace("{{ route('study.test-mode', $set) }}");
+                     window.addEventListener("load", function() {
+                        $(document).ready(function() {
+                            $("#test-mode").click(function(event) {
+                                window.location.replace("{{ route('study.test-mode', $set) }}");
+                            });
                         });
                     });
                 </script>

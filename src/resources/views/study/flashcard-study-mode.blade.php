@@ -24,7 +24,7 @@
     </div>
 
     <div class="card">
-        <div class="card-body user-generated-no-overflow" style="user-select:none;">
+        <div class="card-body" style="user-select:none;">
             <div class="card animate__animated animate__flipInX" id="page_first_card">
                 <div class="card-body user-generated-no-overflow" id="page_first_card_body">
                     <div class="text-center">

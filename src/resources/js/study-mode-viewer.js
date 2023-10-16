@@ -2,11 +2,11 @@
 import DOMPurify from 'dompurify';
 
 import { marked } from 'marked';
-import markedImages from 'marked-images';
+//import markedImages from 'marked-images';
 
 console.log(marked('I am using markdown.'));
 
-marked.use(markedImages());
+//marked.use(markedImages());
 
 // From https://animate.style/
 // Used to animate the flipping of the flashcard card.

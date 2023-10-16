@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-body">
             Let's get started,
-            <div class="mt-2 bg-light pt-4">
+            <div class="mt-2 pt-4">
                 <div class="container">
                     @if ($errors->any())
                     <div class="alert alert-danger mb-1">

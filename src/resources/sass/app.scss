@@ -57,6 +57,11 @@ text-decoration: none !important
   min-height: 30em;
 }
 
+.user-generated-no-overflow img {
+  max-width: 50%; /* Ensure images do not exceed the container width */
+  overflow: hidden;
+}
+
 .ugc-center {
   margin: 0;
   position: absolute;
