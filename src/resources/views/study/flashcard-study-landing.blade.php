@@ -6,9 +6,9 @@
 <main role="main">
     <div class="card">
         <div class="card-body">
-            Welcome to Study mode {{ auth()->user()->friendly_name }}.
+            Welcome to study mode {{ auth()->user()->friendly_name }}.
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="card mt-2">
                         <div class="card-body" id="study-mode">
                             <div class="text-center">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="card mt-2">
                         <div class="card-body" id="test-mode">
                             <div class="text-center">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                {{-- <div class="col-sm-4">
                     <div class="card mt-2">
                         <div class="card-body" id="presentation-mode">
                             <div class="text-center">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
