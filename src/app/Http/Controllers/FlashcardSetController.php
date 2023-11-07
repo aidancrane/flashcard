@@ -9,6 +9,7 @@ use App\Http\AjaxResponseMessage;
 use App\Models\Set;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Gate;
 use Yajra\Datatables\Datatables;
 use App\Rules\WithoutSpaces;
 use App\Models\Flashcard;
@@ -118,6 +119,26 @@ class FlashcardSetController extends Controller
     public function show(Set $set)
     {
         return view("study.flashcard-study-landing")->with('set', $set);
+    }
+
+
+    /**
+     * Export the specified set.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function export(Set $set)
+    {
+        if (Gate::allows('export', $set)) {
+            // User is authorized to export the set
+            // Export the set as JSON
+            $set = Set::with('flashcards')->find($set->id); // Eager load flashcards
+            return response()->json($set);
+        } else {
+            // User is not authorized
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
     }
 
     /**

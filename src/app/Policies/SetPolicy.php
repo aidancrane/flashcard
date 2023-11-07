@@ -56,6 +56,20 @@ class SetPolicy
         return $user->id === $set->owner_id;
     }
 
+
+    /**
+     * Determine whether the user can export the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Set  $set
+     * @return mixed
+     */
+    public function export(User $user, Set $set)
+    {
+        return $user->id === $set->owner_id;
+    }
+
+
     /**
      * Determine whether the user can delete the model.
      *

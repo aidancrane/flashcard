@@ -32,7 +32,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post("/sets/create", ['as' => 'sets.new-set', 'uses' => 'App\Http\Controllers\FlashcardSetController@post_new_set']);
     Route::post("/sets/delete", ['as' => 'sets.delete-from-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@delete_from_index']);
     Route::get("/sets/datatable_index", ['as' => 'sets.datatable-index', 'uses' => 'App\Http\Controllers\FlashcardSetController@datatable_index']);
+
     Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController');
+    Route::get("/sets/{set}/export", ['as' => 'sets.export', 'uses' => 'App\Http\Controllers\FlashcardSetController@Export']);
+    
     Route::resource("/users", 'App\Http\Controllers\UserController');
     Route::put("/users/{user}/update-password", ['as' => 'users.update-password', 'uses' => 'App\Http\Controllers\UserController@UpdatePassword']);
 
