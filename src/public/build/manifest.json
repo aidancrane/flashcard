@@ -1,0 +1,58 @@
+{
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
+    "file": "assets/materialdesignicons-webfont-5159a347.eot",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf": {
+    "file": "assets/materialdesignicons-webfont-be825c12.ttf",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff": {
+    "file": "assets/materialdesignicons-webfont-28c8f97f.woff",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff"
+  },
+  "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2": {
+    "file": "assets/materialdesignicons-webfont-31010194.woff2",
+    "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-a836c77b.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-027b9ff7.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/charts.js": {
+    "file": "assets/charts-40461e36.js",
+    "isEntry": true,
+    "src": "resources/js/charts.js"
+  },
+  "resources/js/set-editor-flashcard-manager.js": {
+    "file": "assets/set-editor-flashcard-manager-cf308dc0.js",
+    "isEntry": true,
+    "src": "resources/js/set-editor-flashcard-manager.js"
+  },
+  "resources/js/set-editor-metadata.js": {
+    "file": "assets/set-editor-metadata-ea9c0ad6.js",
+    "isEntry": true,
+    "src": "resources/js/set-editor-metadata.js"
+  },
+  "resources/js/test-mode-viewer.js": {
+    "file": "assets/test-mode-viewer-e42decb7.js",
+    "isEntry": true,
+    "src": "resources/js/test-mode-viewer.js"
+  },
+  "resources/sass/_variables.scss": {
+    "file": "assets/_variables-e74e4697.css",
+    "isEntry": true,
+    "src": "resources/sass/_variables.scss"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-8798a71a.css",
+    "isEntry": true,
+    "src": "resources/sass/app.scss"
+  }
+}
