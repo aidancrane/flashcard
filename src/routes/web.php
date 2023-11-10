@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource("/sets", 'App\Http\Controllers\FlashcardSetController');
     Route::get("/sets/{set}/export", ['as' => 'sets.export', 'uses' => 'App\Http\Controllers\FlashcardSetController@Export']);
-    
+
     Route::resource("/users", 'App\Http\Controllers\UserController');
     Route::put("/users/{user}/update-password", ['as' => 'users.update-password', 'uses' => 'App\Http\Controllers\UserController@UpdatePassword']);
 
@@ -55,10 +55,7 @@ Route::get("/frequently-asked-questions", ['as' => 'help.faq', 'uses' => 'App\Ht
 
 Route::get("/pages/privacy-policy", ['as' => 'help.privacy-policy', 'uses' => 'App\Http\Controllers\FAQController@PrivacyPolicy']);
 
-
-Route::get('/pages/application-terms-of-service', function () {
-    return view('contact aidancrane78@gmail.com and tell him this is missing.');
-});
+Route::get("/pages/application-terms-of-service", ['as' => 'help.application-terms-of-service', 'uses' => 'App\Http\Controllers\FAQController@TermsOfService']);
 
 Route::get("/auth/google/redirect", ['as' => 'login.google-redirect', 'uses' => 'App\Http\Controllers\SocialiteControllers\GoogleOAuthController@GoogleRedirect']);
 Route::get("/auth/google/callback", ['as' => 'login.google-callback', 'uses' => 'App\Http\Controllers\SocialiteControllers\GoogleOAuthController@GoogleCallback']);
