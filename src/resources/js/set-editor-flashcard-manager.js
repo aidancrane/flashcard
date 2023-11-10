@@ -1,8 +1,9 @@
-import * as DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 
 import { marked } from 'marked';
 
 import * as EasyMDE from 'easymde';
+
 const easyMDE = new EasyMDE();
 
 //import markedImages from 'marked-images';

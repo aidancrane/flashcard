@@ -1,5 +1,5 @@
 // Import modules for npm to minify.
-import * as DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 
 import { marked } from 'marked';
 //import markedImages from 'marked-images';
