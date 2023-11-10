@@ -13,6 +13,7 @@ export default defineConfig({
                 "resources/js/set-editor-flashcard-manager.js",
                 "resources/js/set-editor-metadata.js",
                 "resources/js/test-mode-viewer.js",
+                'resources/js/study-mode-viewer.js',
                 "resources/js/charts.js",
             ],
             refresh: true,
