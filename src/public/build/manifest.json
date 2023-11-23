@@ -1,4 +1,10 @@
 {
+  "__commonjsHelpers-de833af9.js": {
+    "file": "assets/_commonjsHelpers-de833af9.js"
+  },
+  "_marked.esm-0b25df83.js": {
+    "file": "assets/marked.esm-0b25df83.js"
+  },
   "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
     "file": "assets/materialdesignicons-webfont-5159a347.eot",
     "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
@@ -21,7 +27,10 @@
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-027b9ff7.js",
+    "file": "assets/app-1c10ff93.js",
+    "imports": [
+      "__commonjsHelpers-de833af9.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -31,7 +40,11 @@
     "src": "resources/js/charts.js"
   },
   "resources/js/set-editor-flashcard-manager.js": {
-    "file": "assets/set-editor-flashcard-manager-cf308dc0.js",
+    "file": "assets/set-editor-flashcard-manager-dcfd0b3c.js",
+    "imports": [
+      "_marked.esm-0b25df83.js",
+      "__commonjsHelpers-de833af9.js"
+    ],
     "isEntry": true,
     "src": "resources/js/set-editor-flashcard-manager.js"
   },
@@ -39,6 +52,14 @@
     "file": "assets/set-editor-metadata-ea9c0ad6.js",
     "isEntry": true,
     "src": "resources/js/set-editor-metadata.js"
+  },
+  "resources/js/study-mode-viewer.js": {
+    "file": "assets/study-mode-viewer-3935889b.js",
+    "imports": [
+      "_marked.esm-0b25df83.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/study-mode-viewer.js"
   },
   "resources/js/test-mode-viewer.js": {
     "file": "assets/test-mode-viewer-e42decb7.js",

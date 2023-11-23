@@ -34,7 +34,8 @@ class FlashcardSetController extends Controller
      */
     public function index()
     {
-        return view("sets.flashcard-sets");
+        $sets = Set::where('owner_id', auth()->user()->id)->paginate(15);
+        return view("sets.index-sets")->with('sets', $sets);
     }
 
     // Display index datatables.
@@ -95,19 +96,6 @@ class FlashcardSetController extends Controller
             return view("dashboard-error");
         }
         dd("unfinished");
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        dd("2 store");
-        //
     }
 
     /**
