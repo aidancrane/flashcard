@@ -4,15 +4,22 @@
 
 @section('right-panel')
     <main role="main">
-        <h1>
-            {{ auth()->user()->friendly_name }}'s Flashcards
-        </h1>
+
 
         <div class="card">
             <div class="card-body">
+
+                <h1 class="card-title">
+                    {{ auth()->user()->friendly_name }}'s Flashcards
+                </h1>
+
                 @if (Session::has('message'))
                     <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                 @endif
+
+                @if ($sets->isEmpty())
+                <p class="p-5">No flashcard sets found. Start creating your sets now!</p>
+                @else
 
                 <div class="table-responsive">
                     <table class="set-table table table-bordered">
@@ -64,6 +71,8 @@
                     </table>
                 </div>
 
+               
+
 
                 <!-- Pagination links -->
                 <div class="d-flex justify-content-between align-items-center">
@@ -74,6 +83,8 @@
                         {{ $sets->links() }}
                     </div>
                 </div>
+
+                @endif
 
                 <!-- Modal Structure -->
                 <div class="modal fade" id="deleteSetModal" tabindex="-1" aria-labelledby="deleteSetModalLabel"
@@ -104,6 +115,8 @@
                     var deleteModal = document.getElementById('deleteSetModal')
                     deleteModal.addEventListener('show.bs.modal', function(event) {
                         var button = event.relatedTarget;
+                        var deleteModal = document.getElementById('deleteSetModal');
+                        var deleteSetButton = deleteModal.querySelector('.modal-footer .btn-danger');
 
                         // Each flashcard set has an id and a title available.
                         var delete_target_id = button.getAttribute('data-bs-id');
@@ -115,6 +128,16 @@
 
                         modalTitle.textContent = delete_target_name;
                         modalBodyInput.value = delete_target_id;
+
+                        // Set focus on the "Delete Set" button
+                        deleteSetButton.focus();
+
+                        deleteModal.addEventListener('keydown', function(event) {
+                            if (event.key === 'Enter') {
+                                // Trigger the click event for the "Delete Set" button
+                                deleteSetButton.click();
+                            }
+                        });
                     })
                 </script>
 
