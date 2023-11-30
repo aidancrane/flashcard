@@ -4,25 +4,31 @@
     <div>
         <div class="nav flex-column flex-nowrap overflow-auto text-white p-2">
             <ul class="nav flex-column">
-                <ul class="nav flex-column">
-                    <li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sets">
                         <span class="mdi mdi-dock-top mdi-24px"></span>
-                        <span class="menu-text"><a href="/sets" class="no-text-decoration text-white">My Flashcard Sets</a></span>
-                    </li>
-                    <li>
+                        <span class="menu-text">My Flashcards</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sets/create">
                         <span class="mdi mdi-dock-top mdi-24px"></span>
-                        <span class="menu-text"><a href="/sets/create" class="no-text-decoration text-white">Make new Set</a></span>
-                    </li>
-                    <li>
+                        <span class="menu-text">New Flashcards</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/statistics">
                         <span class="mdi mdi-chart-line mdi-24px"></span>
-                        <span class="menu-text"><a href="/statistics" class="no-text-decoration text-white">My Stats</a></span>
-                    </li>
-                    <li>
+                        <span class="menu-text">My Stats</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/{{ auth()->user()->id }}/edit">
                         <span class="mdi mdi-account-outline mdi-24px"></span>
-                        <span class="menu-text"><a href="/users/{{ auth()->user()->id }}/edit" class="no-text-decoration text-white">My Account</a></span>
-                    </li>
-                </ul>
+                        <span class="menu-text">My Account</span>
+                    </a>
+                </li>
             </ul>
         </div>
-    </div>
+    </div>    
 </nav>
