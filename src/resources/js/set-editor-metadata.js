@@ -1,6 +1,8 @@
 // This file contains all the JS logic to interact with the set editor metadata,
 // specifically the title, description and categories.
 
+import { Toast } from 'bootstrap';
+
 $('document').ready(function() {
     // submitting a new title consists of three elements,
 
@@ -69,7 +71,7 @@ $('document').ready(function() {
                 // All is well, well hopefully.
                 var json = $.parseJSON(data);
                 $('.toast-body').text(json.message_text);
-                $('.toast').toast('show');
+                //new bootstrap.Toast(document.querySelector('.toast')).show();
                 // it worked,
                 // Undo Everything.
                 changeInputToTitle();
@@ -80,7 +82,7 @@ $('document').ready(function() {
                 var errors = $.parseJSON(data.responseText);
                 $('.toast-body').text("");
                 $('.toast-body').append(errors["errors"]["set_title"][0]);
-                $('.toast').toast('show');
+                //new bootstrap.Toast(document.querySelector('.toast')).show();
             },
         });
     }
@@ -145,7 +147,7 @@ $('document').ready(function() {
                 // All is well, well hopefully.
                 var json = $.parseJSON(data);
                 $('.toast-body').text(json.message_text);
-                $('.toast').toast('show');
+               // new bootstrap.Toast(document.querySelector('.toast')).show();
                 // it worked,
                 // Undo Everything.
                 changeInputToDescription();
@@ -157,7 +159,7 @@ $('document').ready(function() {
                 $('.toast-body').text("");
 
                 $('.toast-body').append(errors["errors"]["set_description"][0]);
-                $('.toast').toast('show');
+                //new bootstrap.Toast(document.querySelector('.toast')).show();
 
 
             },
@@ -230,7 +232,7 @@ $('document').ready(function() {
                 // All is well, well hopefully.
                 var json = $.parseJSON(data);
                 $('.toast-body').text(json.message_text);
-                $('.toast').toast('show');
+                //new bootstrap.Toast(document.querySelector('.toast')).show();
                 // it worked,
                 // Undo Everything.
                 changeInputToCategoryPills();
@@ -242,7 +244,7 @@ $('document').ready(function() {
                 $('.toast-body').text("");
 
                 $('.toast-body').append(errors["errors"]["category"][0]);
-                $('.toast').toast('show');
+                //new bootstrap.Toast(document.querySelector('.toast')).show();
 
             },
         });

@@ -1,22 +1,22 @@
 import DOMPurify from "dompurify";
 
-import { marked } from 'marked';
+import { marked } from "marked";
 
-import * as EasyMDE from 'easymde';
+import * as EasyMDE from "easymde";
 
-const easyMDE = new EasyMDE();
+//const easyMDE = new EasyMDE();
 
 //import markedImages from 'marked-images';
 
 //marked.use(markedImages());
-
 
 // This file contains all the JS logic to interact with the set editor for
 // editing the count of flashcards and the positioning of the flashcard editor.
 
 let easymde_textareas = [];
 
-let flashcard_toolbar = [{
+let flashcard_toolbar = [
+    {
         name: "bold",
         action: EasyMDE.toggleBold,
         className: "mdi mdi-18px mdi-format-bold",
@@ -66,12 +66,12 @@ let flashcard_toolbar = [{
         className: "mdi mdi-18px mdi-format-list-numbered",
         title: "Numbered List",
     },
-    {
-        name: "table",
-        action: EasyMDE.drawTable,
-        className: "mdi mdi-18px mdi-table",
-        title: "Insert Table",
-    },
+    // {
+    //     name: "table",
+    //     action: EasyMDE.drawTable,
+    //     className: "mdi mdi-18px mdi-table",
+    //     title: "Insert Table",
+    // },
     "|",
     {
         name: "link",
@@ -101,9 +101,12 @@ let flashcard_toolbar = [{
 // Essentailly: Adds EasyMDE editors to newly inserted textareas to dom.
 function flashcard_easyMDE_watch() {
     let set_editor_parent = document.getElementById("set-editors");
-    let all_textareas = set_editor_parent.getElementsByClassName("easy-markdown-editor-needed");
+    let all_textareas = set_editor_parent.getElementsByClassName(
+        "easy-markdown-editor-needed"
+    );
     for (let textarea of all_textareas) {
-        if (!(easymde_textareas.indexOf(textarea.id) >= 0)) { // If the current textarea is not in the list of easymde_textareas.
+        if (!(easymde_textareas.indexOf(textarea.id) >= 0)) {
+            // If the current textarea is not in the list of easymde_textareas.
             easymde_textareas.push(textarea.id);
             new EasyMDE({
                 maxHeight: "140px",
@@ -113,13 +116,13 @@ function flashcard_easyMDE_watch() {
                 toolbar: flashcard_toolbar,
                 element: document.getElementById(textarea.id),
                 shortcuts: {
-                  "toggleCodeBlock": null, // unbind Ctrl-Alt-C
+                    toggleCodeBlock: null, // unbind Ctrl-Alt-C
                 },
-                previewRender: function(plainText) {
+                previewRender: function (plainText) {
                     return marked("<center>\n" + plainText + "</center>"); // Returns HTML from a custom parser
                 },
                 renderingConfig: {
-                    sanitizerFunction: function(renderedHTML) {
+                    sanitizerFunction: function (renderedHTML) {
                         return DOMPurify.sanitize(renderedHTML);
                     },
                 },
@@ -128,43 +131,74 @@ function flashcard_easyMDE_watch() {
     }
 }
 
-
 function remove_flashcard_by_identifier(identifier) {
     if (easymde_textareas.length != 2) {
         if (document.getElementById("flashcard-" + identifier + "-container")) {
-            document.getElementById("flashcard-" + identifier + "-container").remove();
-            var index = easymde_textareas.indexOf("flashcard-" + identifier + "-front");
+            document
+                .getElementById("flashcard-" + identifier + "-container")
+                .remove();
+            var index = easymde_textareas.indexOf(
+                "flashcard-" + identifier + "-front"
+            );
             if (index !== -1) {
                 easymde_textareas.splice(index, 1);
             }
-            var index = easymde_textareas.indexOf("flashcard-" + identifier + "-back");
+            var index = easymde_textareas.indexOf(
+                "flashcard-" + identifier + "-back"
+            );
             if (index !== -1) {
                 easymde_textareas.splice(index, 1);
             }
         }
     } else {
-        $('.toast-body').text("");
-        $('.toast-body').append("You cannot remove the only flashcard!");
-        $('.toast').toast('show');
+        $(".toast-body").text("");
+        $(".toast-body").append("You cannot remove the only flashcard!");
+        $(".toast").toast("show");
     }
 }
 
 function add_flashcard_by_identifier(identifier) {
     if (identifier > 0) {
-        let previous_flashcard = document.getElementById("flashcard-" + (identifier) + "-container");
+        let previous_flashcard = document.getElementById(
+            "flashcard-" + identifier + "-container"
+        );
         let new_card_id = identifier + 1;
         let new_dom_code =
-            "<div class=\"flashcard-container\" id=\"flashcard-" + new_card_id + "-container\"><hr><h3 class=\"flashcard-title-front\">Flashcard " + new_card_id + " - Front</h3><textarea class=\"easy-markdown-editor-needed  flashcard-front\" max=\"300\" id=\"flashcard-" + new_card_id + "-front\" name=\"flashcard-" + new_card_id + "-front\"></textarea><h3 class=\"flashcard-title-back\">Flashcard " + new_card_id + " - Back</h3><textarea class=\"easy-markdown-editor-needed  flashcard-back\" max=\"300\" id=\"flashcard-" + new_card_id + "-back\" name=\"flashcard-" + new_card_id + "-back\"></textarea><div class=\"d-flex justify-content-center\"><button type=\"button\" class=\"btn btn-outline-info btn-sm py-1 flashcard-remove-button\" id=\"" + new_card_id + "\">Remove Flashcard " + new_card_id + "</button></div></div>";
-        previous_flashcard.insertAdjacentHTML('afterend', new_dom_code);
+            '<div class="flashcard-container" id="flashcard-' +
+            new_card_id +
+            '-container"><hr><h3 class="flashcard-title-front">Flashcard ' +
+            new_card_id +
+            ' - Front</h3><textarea class="easy-markdown-editor-needed  flashcard-front" max="300" id="flashcard-' +
+            new_card_id +
+            '-front" name="flashcard-' +
+            new_card_id +
+            '-front"></textarea><h3 class="flashcard-title-back">Flashcard ' +
+            new_card_id +
+            ' - Back</h3><textarea class="easy-markdown-editor-needed  flashcard-back" max="300" id="flashcard-' +
+            new_card_id +
+            '-back" name="flashcard-' +
+            new_card_id +
+            '-back"></textarea><div class="d-flex justify-content-center"><button type="button" class="btn btn-outline-info btn-sm py-1 flashcard-remove-button" id="' +
+            new_card_id +
+            '">Remove Flashcard ' +
+            new_card_id +
+            "</button></div></div>";
+        previous_flashcard.insertAdjacentHTML("afterend", new_dom_code);
 
-        let recently_inserted_remove_button = previous_flashcard.nextSibling.querySelectorAll(".flashcard-remove-button:last-child");
+        let recently_inserted_remove_button =
+            previous_flashcard.nextSibling.querySelectorAll(
+                ".flashcard-remove-button:last-child"
+            );
 
         flashcard_easyMDE_watch();
 
-        recently_inserted_remove_button[0].addEventListener("click", function(event) {
-            remove_flashcard_by_identifier(this.id);
-            order_watch();
-        });
+        recently_inserted_remove_button[0].addEventListener(
+            "click",
+            function (event) {
+                remove_flashcard_by_identifier(this.id);
+                order_watch();
+            }
+        );
         update_flashcard_count();
     }
 }
@@ -178,7 +212,10 @@ function order_watch() {
     easymde_textareas = [];
     for (var i = 0; i < cards.length; i++) {
         let current_card_index = i + 1;
-        cards[i].setAttribute("id", "flashcard-" + current_card_index + "-container");
+        cards[i].setAttribute(
+            "id",
+            "flashcard-" + current_card_index + "-container"
+        );
 
         let front_title = $(cards[i]).find(".flashcard-title-front")[0];
         let front_textarea = $(cards[i]).find(".flashcard-front")[0];
@@ -189,11 +226,23 @@ function order_watch() {
         front_title.innerHTML = "Flashcard " + current_card_index + " - Front";
         back_title.innerHTML = "Flashcard " + current_card_index + " - Back";
 
-        front_textarea.setAttribute("id", "flashcard-" + current_card_index + "-front");
-        back_textarea.setAttribute("id", "flashcard-" + current_card_index + "-back");
+        front_textarea.setAttribute(
+            "id",
+            "flashcard-" + current_card_index + "-front"
+        );
+        back_textarea.setAttribute(
+            "id",
+            "flashcard-" + current_card_index + "-back"
+        );
 
-        front_textarea.setAttribute("name", "flashcard-" + current_card_index + "-front");
-        back_textarea.setAttribute("name", "flashcard-" + current_card_index + "-back");
+        front_textarea.setAttribute(
+            "name",
+            "flashcard-" + current_card_index + "-front"
+        );
+        back_textarea.setAttribute(
+            "name",
+            "flashcard-" + current_card_index + "-back"
+        );
 
         del_button.setAttribute("id", current_card_index);
         del_button.innerHTML = "Remove Flashcard " + current_card_index;
@@ -208,26 +257,22 @@ function order_watch() {
 
 function update_flashcard_count() {
     let cards = document.getElementsByClassName("flashcard-container");
-    $('.flashcard-count').html(cards.length + " flashcards in set.");
+    $(".flashcard-count").html(cards.length + " flashcards in set.");
 }
 
-
-
-
-$('document').ready(function() {
-
-    $('.flashcard-remove-button').click(function() {
+$("document").ready(function () {
+    $(".flashcard-remove-button").click(function () {
         remove_flashcard_by_identifier(this.id);
         order_watch();
     });
 
-    $('#new-flashcard').click(function() {
+    $("#new-flashcard").click(function () {
         add_flashcard_by_identifier(easymde_textareas.length / 2);
         flashcard_easyMDE_watch();
     });
 
-    $('#save-flashcards').click(function() {
-        document.getElementById('flashcards').submit();
+    $("#save-flashcards").click(function () {
+        document.getElementById("flashcards").submit();
     });
 
     // Add easyMDE TextAreas to all boxes that need them.
@@ -238,5 +283,4 @@ $('document').ready(function() {
 
     // Set flashcard count to finish.
     update_flashcard_count();
-
 });
