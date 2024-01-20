@@ -19,7 +19,7 @@
                         <div class="col text-center text-white">
                             <span class="mdi mdi-table-arrow-right mdi-48px"></span>
                             <h3>Exportable</h3>
-                            Export your flashcards to spreadsheet
+                            Export your flashcards.
                         </div>
                     </div>
                     <div class="row pt-3">
