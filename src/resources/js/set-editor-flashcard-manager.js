@@ -153,7 +153,7 @@ function remove_flashcard_by_identifier(identifier) {
     } else {
         $(".toast-body").text("");
         $(".toast-body").append("You cannot remove the only flashcard!");
-        $(".toast").toast("show");
+        //$(".toast").toast("show");
     }
 }
 
