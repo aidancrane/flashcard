@@ -66,12 +66,6 @@ let flashcard_toolbar = [
         className: "mdi mdi-18px mdi-format-list-numbered",
         title: "Numbered List",
     },
-    // {
-    //     name: "table",
-    //     action: EasyMDE.drawTable,
-    //     className: "mdi mdi-18px mdi-table",
-    //     title: "Insert Table",
-    // },
     "|",
     {
         name: "link",
