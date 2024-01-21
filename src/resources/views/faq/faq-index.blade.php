@@ -56,6 +56,16 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#FAQaccordion">
                             <div class="accordion-body">
+                                <h3>Version 0.0.6</h3>
+                                <ul>
+                                    <li>Bootstrap 5</li>
+                                    <ul>
+                                        <li>Unimplemented toasts on the flashcard editor as they no longer work with jQuery.</li>
+                                        <li>Plan is to remove jQuery in future once new editor is ready.</li>
+                                        <li>Export implemented (to json).</li>
+                                        <li>Made a proper Privacy Policy for Google OAuth.</li>
+                                    </ul>
+                                </ul>
                                 <h3>Version 0.0.5</h3>
                                 <ul>
                                     <li>Charting Library</li>

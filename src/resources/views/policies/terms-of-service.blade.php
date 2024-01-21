@@ -52,10 +52,10 @@
                 </ul>
             
                 <h2>7. Contact Information</h2>
-                <p>If you have any questions or concerns regarding these Terms, please contact us at [Contact Email Address].</p>
+                <p>If you have any questions or concerns regarding these Terms, please contact us at Github (see the privacy policy).</p>
             
                 <h2>8. Governing Law</h2>
-                <p>These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction].</p>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the United Kingdom.</p>
             </div>
         </main>
         

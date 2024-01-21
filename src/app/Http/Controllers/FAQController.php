@@ -23,4 +23,8 @@ class FAQController extends Controller
   public function PrivacyPolicy() {
     return view("policies.privacy-policy");
   }
+
+  public function TermsOfService () {
+    return view("policies.terms-of-service");
+  }
 }
