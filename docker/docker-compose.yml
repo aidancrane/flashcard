@@ -67,6 +67,10 @@ services:
     build:
       context: ../docker
       dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - UGID=${GID:-1000}
+        - USER=${USER}
     container_name: php
     volumes:
       - ../src:/var/www/html:delegated
@@ -138,6 +142,10 @@ services:
     build:
       context: ../docker
       dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - UGID=${GID:-1000}
+        - USER=${USER}
     container_name: artisan
     volumes:
       - ../src:/var/www/html:delegated
